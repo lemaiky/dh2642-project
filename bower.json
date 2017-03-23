@@ -1,0 +1,17 @@
+{
+  "name": "online-music-quiz",
+  "description": "An online music quiz",
+  "version": "0.0.0",
+  "homepage": "https://github.com/lemaiky/dh2642-project",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-mocks": "1.6.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.x",
+    "angular-route": "1.6.x",
+    "angular-resource": "1.6.x",
+    "angular-animate": "1.6.x"
+  }
+}
