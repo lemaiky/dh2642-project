@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var onlineMusicQuizApp = angular.module('onlineMusicQuizz', ['ngRoute','ngResource']);
+var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource']);
 
 
 // Here we configure our application module and more specifically our $routeProvider.
@@ -17,7 +17,6 @@ var onlineMusicQuizApp = angular.module('onlineMusicQuizz', ['ngRoute','ngResour
 // even if we are not reloading the page. We can also use back and forward button to navigate between
 // our screens. The paths that you use in the conditions of $routeProvider will be shown in the address
 // bar after the # sign. So, for instance, the home path will be 'http://localhost:8000/#/home'.
-//
 // In index.html you will notice the <div ng-view></div> tag. This is where the specific view sill be
 // loaded. For instance when you go to http://localhost:8000/, since your path does not match any
 // of the when conditions, the otherwise condition is triggered and tells the app to redirect to '/home'.
