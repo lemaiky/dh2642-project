@@ -1,0 +1,25 @@
+<div id="quizView">
+
+  <!-- Progress Bar -->
+  <!-- TODO calculate progress -->
+  <div class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      <span>6/10</span>
+    </div>
+  </div>
+
+  <!-- Question part -->
+  <div id="question">
+    <div class="audioplayer">
+      <audio src="https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba" preload="auto" controls></audio>
+    </div>
+  <!-- TODO get question number -->
+    <h3>Question <span>{{questionNumber}}</span>. <small>Who sang what ?</small></h3>
+    <ul class='quizchoices'>
+      <li><input type="radio" name="choices" value="A" id="choiceA"/><label class="choiceText" for="choiceA">Answer A</label></li>
+      <li><input type="radio" name="choices" value="B" id="choiceB"/><label class="choiceText" for="choiceB">Answer B</label></li>
+      <li><input type="radio" name="choices" value="C" id="choiceC"/><label class="choiceText" for="choiceC">Answer C</label></li>
+    </ul>
+    <button class="btn" ng-click="">Next</button>
+  </div>
+</div>
