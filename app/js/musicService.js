@@ -14,25 +14,9 @@ musicQuizApp.factory('Quiz',
     return parseInt($cookies.get('numberOfQuestions'));
     }
 
-  this.getFullMenu = function() {
-    allCookies = $cookies.getAll()
-    allCookieIDs = [];
-     for(var i in allCookies){
-       if (allCookies[i] != this.getNumberOfGuests()){
-         allCookieIDs.push(allCookies[i]);
-       }
-     }
-      dishes = [];
-      for(var i in allCookieIDs){
-        id = allCookieIDs[i];
-        this.Dish.get({id:id}, function(data){
-          dishes.push(data);
-          //menu.push(data);
-        });
+  this.getQuizList = function() {
     }
 
-return dishes;
-}
 
 this.addMusicToQuiz = function(music) {
    $cookies.put(music.id, music.id);
