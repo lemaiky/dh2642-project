@@ -1,0 +1,14 @@
+Main responsibilities:
+
+Pages:
+- Preparation Page:	Lon
+- More info Page:	Erik
+- Quiz Page:		Maiky
+- Results + Start Page:	Oscar	
+
+Views:
+- Search View:		Lon
+- Details View:		Erik
+- Sidebar View:		(later)
+- Quiz View:		Maiky
+- Results View:		Oscar

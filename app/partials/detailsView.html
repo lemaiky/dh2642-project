@@ -1,0 +1,84 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<!--<ng-include src="'partials/music-quiz-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>-->
+
+<!-- TODO in Lab 5: Display the dish information including image, Description,
+Instructions, Ingredients and total cost. -->
+<style>
+  div.top-addButton {
+ background-color: #39D1B4 ;
+ color: #fff;
+ font-size: 18px;
+   border-radius: 50%;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   font-weight: 200;
+   height: 40px;
+   line-height: 40px;
+   text-align: center;
+   width: 40px;
+ position: absolute;
+ left: 15em;
+ top: 5em;
+}
+
+div.album-addButton {
+ background-color: #39D1B4 ;
+ color: #fff;
+ font-size: 18px;
+   border-radius: 50%;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   font-weight: 200;
+   height: 20px;
+   line-height: 20px;
+   text-align: center;
+   width: 20px;
+ //position: absolute;
+ right: 0px;
+}
+
+h1 {
+  position: absolute;
+  left: 8em;
+}
+div.albums {
+  display: inline-block;
+  //margin-bottom: 0.1em;
+  //width: 30em;
+}
+
+p.albumName {
+  font-weight: bold;
+ //padding-left: 1em;
+  //width: 18em;
+}
+
+p.numberOfSongs {
+ //width: 100%;
+  //padding-right: 1em;
+}
+
+</style>
+
+
+
+<div id="detailsView">
+  <div id="nameAndImage">
+    <h1>Artist</h1>
+    <img src="/images/albumImage.jpg" style="max-width:200px;max-height:200px;">
+    <div class="top-addButton">+</div>
+    <br>
+
+  </div>
+  <div class="albums" >
+    <h2>Albums</h2>
+    
+        <div class="albums" ng-repeat="">
+          <p class="albumName">NameOfAlbum 1 </p>
+          <p class="numberOfSongs">NumberOfSongs 1 <div class="album-addButton">+</div></p>
+        </div>        
+   
+    </div>
+    <div id="confirm-Button">
+      <a href="#"><button type="button" id="conbtn2" class="btn btn-warning" ng-click="">Confirm</button></a>
+    </div>
+  
+</div>
