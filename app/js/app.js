@@ -37,7 +37,24 @@ onlineMusicQuizApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/home.html',
+        controller: 'homeCtrl'
+      }).
+      when('/search', {
+        templateUrl: 'partials/searchView.html',
+        controller: 'searchCtrl'
+      }).
+      when('/details/:id', {
+        templateUrl: 'partials/detailsView.html',
+        controller: 'detailsCtrl'
+      }).
+      when('/quiz', {
+        templateUrl: 'partials/quizView.html',
+        controller: 'quizCtrl'
+      }).
+      when('/results', {
+        templateUrl: 'partials/resultsView.html',
+        controller: 'resultsCtrl'
       }).
       otherwise({
         redirectTo: '/home'
