@@ -1,4 +1,4 @@
-musicQuizApp.factory('Quiz',
+onlineMusicQuizApp.factory('Quiz',
   ['$cookies', '$resource', function ($cookies, $resource) {
 
   var numberOfQuestions = 0;

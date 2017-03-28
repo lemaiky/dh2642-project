@@ -1,5 +1,37 @@
-<div id="quizView">
+<style>
+  #quizView {
+  	margin-top: 8%;
+  }
+  ul.quizchoices {
+  	list-style-type: none;
+  }
+  .choiceText {
+  	font-weight: normal;
+  	padding-left: 10px;
+  }
+  .progress {
+  	width: 20%;
+  	margin-left: 79%;
+  }
+  #question {
+  	width: 80%;
+  	text-align: center;
+  	margin-left: 10%;
+  	padding-top: 5%;
+  }
+  #question button {
+  	margin-left: 50%;
+  }
+  audio {
+  	width: 500px;
+  	background-color: blue;
+  }
+  .audioplayer {
+  	padding-bottom: 50px;
+  }
+</style>
 
+<div id="quizView">
   <!-- Progress Bar -->
   <!-- TODO calculate progress -->
   <div class="progress">
@@ -11,6 +43,7 @@
   <!-- Question part -->
   <div id="question">
     <div class="audioplayer">
+      <!-- TODO random audio sample -->
       <audio src="https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba" preload="auto" controls></audio>
     </div>
   <!-- TODO get question number -->

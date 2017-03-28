@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource']);
+var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies']);
 
 
 // Here we configure our application module and more specifically our $routeProvider.
@@ -37,24 +37,23 @@ onlineMusicQuizApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: 'partials/home.html',
-        controller: 'homeCtrl'
+        templateUrl: 'partials/home.html'
       }).
       when('/search', {
         templateUrl: 'partials/searchView.html',
-        controller: 'searchCtrl'
+        controller: 'SearchCtrl'
       }).
       when('/details/:id', {
         templateUrl: 'partials/detailsView.html',
-        controller: 'detailsCtrl'
+        controller: 'DetailsCtrl'
       }).
       when('/quiz', {
         templateUrl: 'partials/quizView.html',
-        controller: 'quizCtrl'
+        controller: 'QuizCtrl'
       }).
       when('/results', {
         templateUrl: 'partials/resultsView.html',
-        controller: 'resultsCtrl'
+        controller: 'ResultsCtrl'
       }).
       otherwise({
         redirectTo: '/home'
