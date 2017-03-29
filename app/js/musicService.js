@@ -1,9 +1,8 @@
-musicQuizApp.factory('Quiz',
+onlineMusicQuizApp.factory('Quiz',
   ['$cookies', '$resource', function ($cookies, $resource) {
 
   var numberOfQuestions = 0;
   var numberOfCorrectAnswers = 0;
-
   var quizSongs = [];
 
   // Set the number of questions in the quiz
@@ -44,6 +43,14 @@ musicQuizApp.factory('Quiz',
   this.MusicSearch = $resource('https://api.spotify.com',{},{
 
   });
+
+  $ curl "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10"
+
+// https://developer.spotify.com/web-api/console/get-artist-albums/
+// Get several albums     ://api.spotify.com/v1/albums
+// Get several artists    : https://api.spotify.com/v1/artists
+// Get an artists albums  : https://api.spotify.com/v1/artists/{id}/albums
+
 
   return this;
 }]);

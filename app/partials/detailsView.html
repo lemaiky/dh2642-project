@@ -8,20 +8,21 @@ Instructions, Ingredients and total cost. -->
  background-color: #39D1B4 ;
  color: #fff;
  font-size: 18px;
-   border-radius: 50%;
+   border-radius: 40%;
    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
    font-weight: 200;
    height: 40px;
    line-height: 40px;
    text-align: center;
-   width: 40px;
+   width: 90px;
  position: absolute;
- left: 15em;
+ left: 14em;
  top: 5em;
 }
 
-div.album-addButton {
- background-color: #39D1B4 ;
+span.album-addButton {
+  display: inline-block;
+ background-color: #39D1B4;
  color: #fff;
  font-size: 18px;
    border-radius: 50%;
@@ -41,19 +42,22 @@ h1 {
 }
 div.albums {
   display: inline-block;
-  //margin-bottom: 0.1em;
-  //width: 30em;
+  margin-bottom: 0.7em;
+  width: 30em;
 }
 
-p.albumName {
+span.albumName {
   font-weight: bold;
- //padding-left: 1em;
-  //width: 18em;
+  //margin-left: 2em;
 }
 
-p.numberOfSongs {
- //width: 100%;
-  //padding-right: 1em;
+span.numberOfSongs {
+  width: 20em;
+  margin-left: 5em;
+}
+
+span.album-addButton {
+  margin-left: 5em;
 }
 
 </style>
@@ -61,10 +65,11 @@ p.numberOfSongs {
 
 
 <div id="detailsView">
+<div class="content">
   <div id="nameAndImage">
     <h1>Artist</h1>
     <img src="/images/albumImage.jpg" style="max-width:200px;max-height:200px;">
-    <div class="top-addButton">+</div>
+    <div class="top-addButton">Add</div>
     <br>
 
   </div>
@@ -72,13 +77,36 @@ p.numberOfSongs {
     <h2>Albums</h2>
     
         <div class="albums" ng-repeat="">
-          <p class="albumName">NameOfAlbum 1 </p>
-          <p class="numberOfSongs">NumberOfSongs 1 <div class="album-addButton">+</div></p>
+          <span class="albumName">NameOfAlbum 1 </span>
+          <span class="numberOfSongs">NumberOfSongs 1 </span>
+          <span class="album-addButton">+</span>
+        </div>     
+
+        <div class="albums" ng-repeat="">
+          <span class="albumName">NameOfAlbum 2 </span>
+          <span class="numberOfSongs">NumberOfSongs 2 </span>
+          <span class="album-addButton">+</span>
+        </div>     
+
+        <div class="albums" ng-repeat="">
+          <span class="albumName">NameOfAlbum 3 </span>
+          <span class="numberOfSongs">NumberOfSongs 3 </span>
+          <span class="album-addButton">+</span>
+        </div>     
+
+        <div class="albums" ng-repeat="">
+          <span class="albumName">NameOfAlbum 4 </span>
+          <span class="numberOfSongs">NumberOfSongs 4 </span>
+          <span class="album-addButton">+</span>
         </div>        
    
     </div>
     <div id="confirm-Button">
       <a href="#"><button type="button" id="conbtn2" class="btn btn-warning" ng-click="">Confirm</button></a>
     </div>
+  </div>
+
+
   
+
 </div>
