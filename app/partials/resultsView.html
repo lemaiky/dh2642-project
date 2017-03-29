@@ -1,5 +1,5 @@
 <head>
-<!--<link rel="stylesheet" type="text/css" href="../style.css">-->
+  <link rel="stylesheet" type="text/css" href="../style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -9,27 +9,18 @@
   display:block;
 }
 
-#header {
-  position:absolute;
-  top:0px;
-  left:0px;
-  height:100px;
-  width:100%;
-  background-color:#097054;
-}
-
 #resultSummary {
   position:absolute;
   top:100px;
   left:0px;
   width:100%;
-  height:300px;
+  height:100px;
   margin:0px;
 }
 
 #quizInfo {
   position:absolute;
-  top:400;
+  height:600px;
   left:0px;
   bottom:0px;
   width:100%;
@@ -37,18 +28,30 @@
   background-color:#097054;
 }
 
+#backToSearchButton {
+ background-color: #39D1B4 ;
+ color: #fff;
+ font-size: 18px;
+border-radius: 90%;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   font-weight: 200;
+   height: 50px;
+   line-height: 20px;
+   text-align: center;
+   width: 150px;
+ //position: absolute;
+ right: 0px;
+  margin-left:46%;
+}
+
 </style>
 
 <div id="result">
 
-  <div class="col-sm-12" id="header">
-    <h1 style="text-align:center;padding:20px;color:white;">Music Quiz Results</h1>
-  </div>
-
   <div id="resultSummary">
     <h2 style="text-align:center;padding-top:40px">Congratulations!</h2>
     <h2 style="text-align:center;padding:20px;">You answered <span class="nog5"></span>{{ score }} out of {{ numberOfQuestions }} questions correctly!</h2>
-    <a href="quizView.html" style="padding-left:47%;"><button type="button">Create new quiz!</button></a>
+    <a ng-href="#!/search"><button type="button" id="backToSearchButton">Create new quiz!</button></a>
   </div>
 
   <div id="quizInfo">
@@ -57,4 +60,3 @@
       <p style="text-align:center;color:white;">{{ song.rightOrFalseAnswer song.questionNr: song.title by song.bandName }}</p>
   </div>
 </div>
-
