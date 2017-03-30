@@ -1,6 +1,20 @@
-  <link rel="stylesheet" type="text/css" href="../style.css">
-
+<link rel="stylesheet" type="text/css" href="../style.css">
 
 <div class="sidebar">
-  <h1>Sidebar</h1>
+  <h2 style="text-align:center;color:white;">Quiz Settings</h2>
+  <h3 style="text-align:center;color:white;">Number of Questions <input type="number" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)"/></h3>
+  <h3 style="text-align:center;color:white;">Music</h2>
+  <div class="sidebarTable">
+    <div ng-repeat="song in music" style="border:solid;border-width:1px;width:100%;padding-right:3px;">
+      <button class="glyphicon glyphicon-trash btn-md" ng-click="removeMusic(x);"></button>
+    </div>
+  <hr id="horisontalLine"></hr>
+  <div class="item-row" id="priceAndButton">
+    <h4>
+    </h4>
+    <div id="start-quiz-button">
+      <a ng-href="#!/search" style="padding-left:30%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>
+    </div>
+  </div>
+  </div>
 </div>

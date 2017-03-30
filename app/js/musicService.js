@@ -12,8 +12,15 @@ onlineMusicQuizApp.factory('Quiz',
 
   // Get the number of questions in the quiz
   this.getNumberOfQuestions = function() {
+    if ($cookies.get('numberOfQuestions') == undefined) {
+    this.setNumberOfGuests(5);
     return parseInt($cookies.get('numberOfQuestions'));
   }
+  else {
+    return parseInt($cookies.get('numberOfQuestions'));
+    }
+  }
+
 
   // Set the number of correctly answered questions in the quiz
   this.setNumberOfCorrectAnswers = function(number) {
