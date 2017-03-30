@@ -16,7 +16,7 @@ Instructions, Ingredients and total cost. -->
    text-align: center;
    width: 90px;
  position: absolute;
- left: 14em;
+ left: 15.7em;
  top: 5em;
 }
 
@@ -57,9 +57,22 @@ span.numberOfSongs {
 }
 
 span.album-addButton {
-  margin-left: 5em;
+  //margin-left: 5em;
 }
 
+#detailsView {
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 18%;
+}
+
+#addButton {
+  border: none;
+  background: none;
+  width: 20px;
+  padding: 0;
+  margin-left: 6em;
+}
 </style>
 
 
@@ -76,28 +89,28 @@ span.album-addButton {
   <div class="albums" >
     <h2>Albums</h2>
     
-        <div class="albums" ng-repeat="">
+        <div class="albums"><!-- ng-repeat="">-->
           <span class="albumName">NameOfAlbum 1 </span>
           <span class="numberOfSongs">NumberOfSongs 1 </span>
-          <span class="album-addButton">+</span>
+          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums" ng-repeat="">
+        <div class="albums"> <!--ng-repeat="">-->
           <span class="albumName">NameOfAlbum 2 </span>
           <span class="numberOfSongs">NumberOfSongs 2 </span>
-          <span class="album-addButton">+</span>
+          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums" ng-repeat="">
+        <div class="albums"><!-- ng-repeat="">-->
           <span class="albumName">NameOfAlbum 3 </span>
           <span class="numberOfSongs">NumberOfSongs 3 </span>
-          <span class="album-addButton">+</span>
+          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums" ng-repeat="">
+        <div class="albums"><!--ng-repeat="">-->
           <span class="albumName">NameOfAlbum 4 </span>
           <span class="numberOfSongs">NumberOfSongs 4 </span>
-          <span class="album-addButton">+</span>
+          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>        
    
     </div>
