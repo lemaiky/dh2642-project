@@ -1,3 +1,4 @@
 onlineMusicQuizApp.controller('ResultsCtrl', function($scope,Quiz) {
-  //TODO
+  $scope.score = Quiz.getNumberOfCorrectAnswers()
+  $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
 });
