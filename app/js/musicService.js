@@ -1,8 +1,8 @@
 onlineMusicQuizApp.factory('Quiz',
   ['$cookies', '$resource', function ($cookies, $resource) {
 
-  var numberOfQuestions = 0;
-  var numberOfCorrectAnswers = 0;
+  var numberOfQuestions = $cookies.put('numberOfQuestions', 0);
+  var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
   var quizSongs = [];
 
   // Set the number of questions in the quiz
@@ -113,6 +113,12 @@ onlineMusicQuizApp.factory('Quiz',
 
   // });
   this.trackReturn = $resource('https://api.spotify.com/v1/tracks/:id', {}, {
+    get: {}
+  });
+
+
+  // test function --> will not keep
+  this.severalTracks = $resource('https://api.spotify.com/v1/albums/:id/tracks', {}, {
     get: {}
   });
 
