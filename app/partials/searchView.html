@@ -4,16 +4,16 @@
 		<meta charset="utf-8"/>
 		<title>Search</title>
 	</head>
-	
+
 	<style>
 	*{
 		margin: 0px;
 		padding: 0px;
 	}
-	
+
 	body {
 		width: 100%;
-		
+
 		display: -webkit-box;
 		-webkit-box-pack: center;
 	}
@@ -26,11 +26,11 @@
 	table#searchTable tr:nth-child(even) {
     background-color: #eee;
 	}
-	
+
 	table#searchTable{
 		width: 100%;
 	}
-	
+
 	table#searchTable tr{
 		height: 80px;
 	}
@@ -41,7 +41,7 @@
 		position: relative;
 		overflow: hidden;
 	}
-	
+
 	#artistCover {
 		float: left;
 		margin: 10 auto;
@@ -54,7 +54,7 @@
 		-o-border-radius: 50%;
 		border-radius: 50%;
 	}
-	
+
 	#artistName {
 		float: left;
 		margin-left: 10px;
@@ -62,7 +62,9 @@
 	}
 
 	</style>
-	
+
+  <ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
+
 	<div class="container">
 		<h1>Search for an Artist</h1>
 		<p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
@@ -74,7 +76,7 @@
 		</form>
 		<div id="results"></div>
 	</div>
-	
+
 	<body>
 		<div id="wrapper">
 			<table id="searchTable">
@@ -82,7 +84,7 @@
 					<td>
 						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
 						<div id="artistName">
-							{{artist.name}}	
+							{{artist.name}}
 						</div>
 					</td>
 				</tr>
@@ -90,7 +92,7 @@
 					<td>
 						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
 						<div id="artistName">
-							{{artist.name}}	
+							{{artist.name}}
 						</div>
 					</td>
 				</tr>
@@ -98,7 +100,7 @@
 					<td>
 						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
 						<div id="artistName">
-							{{artist.name}}	
+							{{artist.name}}
 						</div>
 					</td>
 				</tr>
