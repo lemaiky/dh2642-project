@@ -1,7 +1,8 @@
 onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
 
   $scope.options = new Array(3);
-  $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
+  //$scope.numberOfQuestions = Quiz.getNumberOfQuestions();
+  $scope.numberOfQuestions = 5;
   $scope.questionNumber = 1;
   $scope.progressValue = $scope.questionNumber / $scope.numberOfQuestions * 100;
 
