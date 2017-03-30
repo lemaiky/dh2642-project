@@ -1,54 +1,108 @@
-//Everything is taken from http://jsfiddle.net/JMPerez/0u0v7e1b/
-<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
-<style>
-    body {
-    padding: 20px;
-}
-#search-form, .form-control {
-    margin-bottom: 20px;
-}
-.cover {
-    width: 300px;
-    height: 300px;
-    display: inline-block;
-    background-size: cover;
-}
-.cover:hover {
-    cursor: pointer;
-}
-.cover.playing {
-    border: 5px solid #e45343;
-}
-</style>
-<div class="container">
-    <h1>Search for an Artist</h1>
-    <p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
-    <form id="search-form">
-        <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
-        <input type="submit" id="search" class="btn btn-primary" value="Search" />
-    </form>
-    <div id="results"></div>
-</div>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Search</title>
+	</head>
+	
+	<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	body {
+		width: 100%;
+		
+		display: -webkit-box;
+		-webkit-box-pack: center;
+	}
 
-<table>
-	<tr>
-		<td>
-			<img src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
-			{{artist.name}}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<img src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
-			{{artist.name}}
-		</td>
-	</tr>
-</table>
-  
-<!-- 
-<script id="results-template" type="text/x-handlebars-template">
-    {{#each albums.items}}
-    <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"></div>
-    {{/each}}
-</script>
--->
+	#wrapper {
+		max-width: 1000px;
+		margin: 20px;
+	}
+
+	table#searchTable tr:nth-child(even) {
+    background-color: #eee;
+	}
+	
+	table#searchTable{
+		width: 100%;
+	}
+	
+	table#searchTable tr{
+		height: 80px;
+	}
+
+	#imgCropper {
+		width: 75px;
+		height: auto;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	#artistCover {
+		float: left;
+		margin: 10 auto;
+		margin-left: 10px;
+		height: 75px;
+		width: 75px;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+		border-radius: 50%;
+	}
+	
+	#artistName {
+		float: left;
+		margin-left: 10px;
+		height: 75px;
+	}
+
+	</style>
+	
+	<div class="container">
+		<h1>Search for an Artist</h1>
+		<p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
+		<form id="search-form">
+		<!--
+			<input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+			<input type="submit" id="search" class="btn btn-primary" value="Search" />
+		-->
+		</form>
+		<div id="results"></div>
+	</div>
+	
+	<body>
+		<div id="wrapper">
+			<table id="searchTable">
+				<tr>
+					<td>
+						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
+						<div id="artistName">
+							{{artist.name}}	
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
+						<div id="artistName">
+							{{artist.name}}	
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
+						<div id="artistName">
+							{{artist.name}}	
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+ </html>
