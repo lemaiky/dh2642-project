@@ -3,6 +3,7 @@
 
 <!-- TODO in Lab 5: Display the dish information including image, Description,
 Instructions, Ingredients and total cost. -->
+
 <style>
   div.top-addButton {
  background-color: #39D1B4 ;
@@ -38,8 +39,9 @@ span.album-addButton {
 
 h1 {
   position: absolute;
-  left: 8em;
+  left: 4.5em;
 }
+
 div.albums {
   display: inline-block;
   margin-bottom: 0.7em;
@@ -55,10 +57,11 @@ span.numberOfSongs {
   width: 20em;
   margin-left: 5em;
 }
-
+/*
 span.album-addButton {
   //margin-left: 5em;
 }
+*/
 
 #detailsView {
   position: absolute;
@@ -71,9 +74,72 @@ span.album-addButton {
   background: none;
   width: 20px;
   padding: 0;
-  margin-left: 6em;
+  //margin-left: 20em;
 }
+
+
+.collapsible{
+  width: 50em;
+  margin: 0;
+  padding: 0; 
+  display: inline-block;
+  margin-bottom: 0.7em;
+}
+
+
+div#albums {
+  display: inline-block;
+  margin-bottom: 0.7em;
+  width: 20em;
+}
+/*
+span#albumName {
+  font-weight: bold;
+  //margin-left: 2em;
+}
+
+span#numberOfSongs {
+  width: 20em;
+  margin-left: 5em;
+}
+
+span#album-addButton {
+  //margin-left: 5em;
+}
+*/
+
+
+
+
 </style>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<!-- Socicon (social icons) -->
+<link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">    
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import font-->
+<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet"> 
+
+
+
+
+<!--Ny-->
+
+
 
 
 
@@ -89,37 +155,141 @@ span.album-addButton {
   <div class="albums" >
     <h2>Albums</h2>
     
-        <div class="albums"><!-- ng-repeat="">-->
-          <span class="albumName">NameOfAlbum 1 </span>
+        <!-- div class="albums">--><!-- ng-repeat="">-->
+          <!--<span class="albumName">NameOfAlbum 1 </span>
           <span class="numberOfSongs">NumberOfSongs 1 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums"> <!--ng-repeat="">-->
-          <span class="albumName">NameOfAlbum 2 </span>
+        <div class="albums">--> <!--ng-repeat="">-->
+          <!--<span class="albumName">NameOfAlbum 2 </span>
           <span class="numberOfSongs">NumberOfSongs 2 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums"><!-- ng-repeat="">-->
-          <span class="albumName">NameOfAlbum 3 </span>
+        <div class="albums">--><!-- ng-repeat="">-->
+          <!--<span class="albumName">NameOfAlbum 3 </span>
           <span class="numberOfSongs">NumberOfSongs 3 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>     
 
-        <div class="albums"><!--ng-repeat="">-->
-          <span class="albumName">NameOfAlbum 4 </span>
+        <div class="albums">--><!--ng-repeat="">-->
+          <!--<span class="albumName">NameOfAlbum 4 </span>
           <span class="numberOfSongs">NumberOfSongs 4 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
-        </div>        
+        </div>         -->
    
+
+
+        <!--<div class="container work">-->
+      <ul class="collapsible popout" id="albums" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header hoverable" id="albumName"> 
+              <span class="subtitle work-text left"> Img</span> 
+              <span class="subtitle work-text center"> TitleOnAlbum 1</span>
+              <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 1</span>
+             
+            </div>
+            <div class="collapsible-body">              
+              <span>Song 1</span><br>
+               <span>Song 2</span><br>
+                <span>Song 3</span><br>
+                 <span>Song 4</span><br>
+                  <span>Song 5</span><br>
+                   <span>Song 6</span><br>
+                    <span>Song 7</span><br>
+                     <span>Song 8</span><br>
+                      <span>Song 9</span><br>
+            </div>
+          </li>
+          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
+
+          <li>
+            <div class="collapsible-header hoverable" id="albumName"> 
+            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text center">TitleOnAlbum 2</span>
+            <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 2</span>
+           
+          </div>
+          <div class="collapsible-body">
+            <span>Song 1</span><br>
+               <span>Song 2</span><br>
+                <span>Song 3</span><br>
+                 <span>Song 4</span><br>
+                  <span>Song 5</span><br>
+                   <span>Song 6</span><br>
+                    <span>Song 7</span><br>
+                     <span>Song 8</span><br>
+                      <span>Song 9</span><br>
+                      <button>Add</button>
+          </div>
+        </li>
+        <!--</div>-->
+        <li>
+            <div class="collapsible-header hoverable" id="albumName"> 
+            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text center">TitleOnAlbum 3</span>
+            <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 3</span>
+           
+          </div>
+          <div class="collapsible-body">
+            <span>Song 1</span><br>
+               <span>Song 2</span><br>
+                <span>Song 3</span><br>
+                 <span>Song 4</span><br>
+                  <span>Song 5</span><br>
+                   <span>Song 6</span><br>
+                    <span>Song 7</span><br>
+                     <span>Song 8</span><br>
+                      <span>Song 9</span><br>
+          </div>
+        </li>
+        <li>
+            <div class="collapsible-header hoverable" id="albumName"> 
+            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text center">TitleOnAlbum 4</span>
+            <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 4</span>
+           
+          </div>
+          <div class="collapsible-body">
+            <span>Song 1</span><br>
+               <span>Song 2</span><br>
+                <span>Song 3</span><br>
+                 <span>Song 4</span><br>
+                  <span>Song 5</span><br>
+                   <span>Song 6</span><br>
+                    <span>Song 7</span><br>
+                     <span>Song 8</span><br>
+                      <span>Song 9</span><br>
+          </div>
+        </li>
+
+</ul>
+
     </div>
     <div id="confirm-Button">
-      <a href="#"><button type="button" id="con-btn" class="btn btn-warning" ng-click="">Confirm</button></a>
+      <a href="#"><button type="button" id="con-btn" class="btn btn-warning" ng-click="">Back</button></a>
     </div>
   </div>
 
 
+
+
+
+
+
+
+
+    
+</div>
+
+
+  
+  
   
 
-</div>
+
+
+
+
+
