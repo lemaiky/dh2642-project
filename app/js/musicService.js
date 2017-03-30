@@ -103,9 +103,10 @@ onlineMusicQuizApp.factory('Quiz',
 
 
   // // API request (UNFINISHED)
-  // this.MusicSearch = $resource('https://api.spotify.com',{},{
+  this.MusicSearch = $resource('https://api.spotify.com/v1/search',{},{
+    get: {}
+  });
 
-  // });
   this.trackReturn = $resource('https://api.spotify.com/v1/tracks/:id', {}, {
     get: {}
   });

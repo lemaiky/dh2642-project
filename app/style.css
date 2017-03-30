@@ -25,11 +25,6 @@ html , body {
 	color:white;
 }
 
-body {
-	position: fixed;
-	overflow: scroll;
-}
-
 .sidebar {
   position:absolute;
 	padding-top:50px;
