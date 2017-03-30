@@ -112,13 +112,14 @@ span#album-addButton {
   //margin-left: 5em;
 }
 */
-span.song {
+div.song {
   margin-left: 2em;
   margin-bottom: 0;
   //width: 100%;
+  //border: solid;
 }
 
-span.song:hover {
+div.song:hover {
   //background-color: blue;
   color: red;
   font-size: 16px;
@@ -127,7 +128,6 @@ span.song:hover {
 body {
   position: relative; !Important
   overflow: scroll;
-  position: behimd
 }
 
 
@@ -205,7 +205,7 @@ body {
       <ul class="collapsible popout" id="albums" data-collapsible="accordion">
           <li style="vertical-align: middle" >
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
-              <span class="subtitle work-text left"> Img</span> 
+              <span class="subtitle work-text left"> <img src="/images/albumImage.jpg" style="max-width:35px;max-height:35px;"></span> 
               <span class="subtitle work-text center" style="padding-left: 8em"> TitleOnAlbum 1</span>
               <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 1</span>
           <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
@@ -227,22 +227,22 @@ body {
 
           <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
-            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text left"><img src="/images/albumImage.jpg" style="max-width:35px;max-height:35px;"></span> 
             <span class="subtitle work-text center" style="padding-left: 8em">TitleOnAlbum 2</span>
             <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 2</span>
             <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
            
           </div>
           <div class="collapsible-body">
-            <span>Song 1</span><br>
-               <span>Song 2</span><br>
-                <span>Song 3</span><br>
-                 <span>Song 4</span><br>
-                  <span>Song 5</span><br>
-                   <span>Song 6</span><br>
-                    <span>Song 7</span><br>
-                     <span>Song 8</span><br>
-                      <span>Song 9</span><br>
+            <div style="background-color: red;">Song 1</div>
+               <div>Song 2</div>
+                <div>Song 3</div>
+                 <div>Song 4</div>
+                  <div>Song 5</div>
+                   <div>Song 6</div>
+                    <div>Song 7</div>
+                     <div>Song 8</div>
+                      <div>Song 9</div>
                       <button>Add</button>
           </div>
         </li>
@@ -250,7 +250,7 @@ body {
 
         <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
-            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text left"><img src="/images/albumImage.jpg" style="max-width:35px;max-height:35px;"></span> 
             <span class="subtitle work-text center" style="padding-left: 8em">TitleOnAlbum 3</span>
             <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 3</span>
             <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
@@ -272,7 +272,7 @@ body {
 
         <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
-            <span class="subtitle work-text left">Img</span> 
+            <span class="subtitle work-text left"><img src="/images/albumImage.jpg" style="max-width:35px;max-height:35px;"></span> 
             <span class="subtitle work-text center" style="padding-left: 8em">TitleOnAlbum 4</span>
             <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 4</span>
             <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
