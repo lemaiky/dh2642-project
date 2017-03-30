@@ -1,3 +1,5 @@
 onlineMusicQuizApp.controller('DetailsCtrl', function($scope,Quiz) {
-  //TODO
+  $scope.addAlbum = function(album) {
+    Quiz.addAlbumToQuiz(album);
+  }
 });
