@@ -1,8 +1,7 @@
 onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
 
   $scope.options = new Array(3);
-  //$scope.numberOfQuestions = Quiz.getNumberOfQuestions();
-  $scope.numberOfQuestions = 10;
+  $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
   $scope.questionNumber = 1;
   $scope.progressValue = $scope.questionNumber / $scope.numberOfQuestions * 100;
 
@@ -16,7 +15,7 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     }
   }
 
-  //$scope.allTracks = Quiz.getChosenQuizMusic();
+  //TODO: $scope.allTracks = Quiz.getChosenQuizMusic();
   $scope.allTracks = Quiz.severalTracks.get({id:'4OHNH3sDzIxnmUADXzv2kT'}, function(tracks) {
     $scope.track = tracks.items[$scope.questionNumber - 1];
     $scope.setOptions(tracks.items);

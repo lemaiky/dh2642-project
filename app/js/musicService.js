@@ -118,6 +118,7 @@ onlineMusicQuizApp.factory('Quiz',
 
 
   // test function --> will not keep
+  //TODO: take off when sidebarCtrl finished
   this.severalTracks = $resource('https://api.spotify.com/v1/albums/:id/tracks', {}, {
     get: {}
   });
