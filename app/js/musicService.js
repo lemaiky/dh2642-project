@@ -1,7 +1,7 @@
 onlineMusicQuizApp.factory('Quiz',
   ['$cookies', '$resource', function ($cookies, $resource) {
 
-  var numberOfQuestions = $cookies.put('numberOfQuestions', 0);
+  var numberOfQuestions = $cookies.put('numberOfQuestions', 5);
   var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
   var quizSongs = [];
 
@@ -12,13 +12,7 @@ onlineMusicQuizApp.factory('Quiz',
 
   // Get the number of questions in the quiz
   this.getNumberOfQuestions = function() {
-    if ($cookies.get('numberOfQuestions') == undefined) {
-    this.setNumberOfQuestions(5);
     return parseInt($cookies.get('numberOfQuestions'));
-  }
-  else {
-    return parseInt($cookies.get('numberOfQuestions'));
-    }
   }
 
 
