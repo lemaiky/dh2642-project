@@ -29,7 +29,6 @@
   	padding-top: 5%;
   }
   .question button {
-  	margin-left: 65%;
     margin-top: 5%;
     font-size: 16px;
     background-color: #39D1B4;
@@ -63,14 +62,13 @@
   <!-- Question part -->
   <div class="question">
     <div class="audioplayer">
-      <!-- TODO random audio sample -->
-      <audio src="{{track.preview_url}}" preload="auto" controls>Your browser does not support the audio element.</audio>
+      <audio src="{{track.preview_url}}" preload="auto" controls autoplay>Your browser does not support the audio element.</audio>
     </div>
-    <h3>Question <span>{{questionNumber}}</span>. <small>Who sang the song ?</small></h3>
-    <ul class='quizchoices'>
-      <li><input type="radio" name="choices" value="A" id="choiceA"/><label class="choiceText" for="choiceA">{{track.artists[0].name}}</label></li>
-      <li><input type="radio" name="choices" value="B" id="choiceB"/><label class="choiceText" for="choiceB">{{track.name}}</label></li>
-      <li><input type="radio" name="choices" value="C" id="choiceC"/><label class="choiceText" for="choiceC">Answer C</label></li>
+    <h3>Question <span>{{questionNumber}}</span>. <small>What is the name of that song ?</small></h3>
+    <ul class='quizchoices' >
+      <li ng-repeat="option in options track by $index">
+        <input type="radio" name="options" id="{{option}}" value="{{option}}" ng-value="{{option}}" ng-model="select" ng-change="selectAnswer(select)"/><label class="choiceText" for="{{option}}">{{option}}</label>
+      </li>
     </ul>
     <div ng-if="questionNumber != numberOfQuestions"><button class="btn" ng-click="setNextQuestion()">Next</button></div>
     <div ng-if="questionNumber == numberOfQuestions"><a ng-href="#!/results" id="endQuizButton"><button class="btn" ng-click="endQuiz()">Finish</button></a></div>

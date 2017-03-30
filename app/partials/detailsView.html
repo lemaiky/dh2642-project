@@ -86,7 +86,7 @@ button#addButton {
 ul.collapsible{
   width: 50em;
   margin: 0;
-  padding: 0; 
+  padding: 0;
   display: inline-block;
   margin-bottom: 0.7em;
 }
@@ -148,11 +148,11 @@ body {
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 <!-- Socicon (social icons) -->
-<link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">    
+<link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--Import font-->
-<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 
 
 
@@ -161,7 +161,7 @@ body {
 
 
 
-
+<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
 
 <div id="detailsView">
 <div class="content">
@@ -174,31 +174,31 @@ body {
   </div>
   <div class="albums" >
     <h2>Albums</h2>
-    
+
         <!-- div class="albums">--><!-- ng-repeat="">-->
           <!--<span class="albumName">NameOfAlbum 1 </span>
           <span class="numberOfSongs">NumberOfSongs 1 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
-        </div>     
+        </div>
 
         <div class="albums">--> <!--ng-repeat="">-->
           <!--<span class="albumName">NameOfAlbum 2 </span>
           <span class="numberOfSongs">NumberOfSongs 2 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
-        </div>     
+        </div>
 
         <div class="albums">--><!-- ng-repeat="">-->
           <!--<span class="albumName">NameOfAlbum 3 </span>
           <span class="numberOfSongs">NumberOfSongs 3 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
-        </div>     
+        </div>
 
         <div class="albums">--><!--ng-repeat="">-->
           <!--<span class="albumName">NameOfAlbum 4 </span>
           <span class="numberOfSongs">NumberOfSongs 4 </span>
           <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
         </div>         -->
-   
+
 
 
         <!--<div class="container work">-->
@@ -224,6 +224,7 @@ body {
             </div>
           </li>
 
+
           <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
             <span class="subtitle work-text left">Img</span> 
@@ -246,6 +247,7 @@ body {
           </div>
         </li>
         <!--</div>-->
+
         <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
             <span class="subtitle work-text left">Img</span> 
@@ -253,6 +255,7 @@ body {
             <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 3</span>
             <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
            
+
           </div>
           <div class="collapsible-body">
             <span>Song 1</span><br>
@@ -266,6 +269,7 @@ body {
                       <span>Song 9</span><br>
           </div>
         </li>
+
         <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative"> 
             <span class="subtitle work-text left">Img</span> 
@@ -273,6 +277,7 @@ body {
             <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 4</span>
             <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
            
+
           </div>
           <div class="collapsible-body">
             <span>Song 1</span><br>
@@ -303,16 +308,5 @@ body {
 
 
 
-    
+
 </div>
-
-
-  
-  
-  
-
-
-
-
-
-

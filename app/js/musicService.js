@@ -1,9 +1,9 @@
 onlineMusicQuizApp.factory('Quiz',
   ['$cookies', '$resource', function ($cookies, $resource) {
 
-  var numberOfQuestions = 0;
-  var numberOfCorrectAnswers = 0;
-  var quizSongs = [];
+  var numberOfQuestions = $cookies.put('numberOfQuestions', 5);
+  var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
+  var albums = [];
 
   // Set the number of questions in the quiz
   this.setNumberOfQuestions = function(number) {
@@ -12,13 +12,7 @@ onlineMusicQuizApp.factory('Quiz',
 
   // Get the number of questions in the quiz
   this.getNumberOfQuestions = function() {
-    if ($cookies.get('numberOfQuestions') == undefined) {
-    this.setNumberOfGuests(5);
     return parseInt($cookies.get('numberOfQuestions'));
-  }
-  else {
-    return parseInt($cookies.get('numberOfQuestions'));
-    }
   }
 
 
@@ -37,8 +31,9 @@ onlineMusicQuizApp.factory('Quiz',
     }
 
   // Add new music e.g. album or artist (UNFINISHED)
-  this.addMusicToQuiz = function(music) {
-    $cookies.put(music.id, music.id);
+  this.addAlbumToQuiz = function(music) {
+    albums.push(music.id);
+    $cookies.put("albums", albums);
   }
 
   // Remove music from quizMusicList e.g. album or artist (UNFINISHED)
@@ -49,70 +44,78 @@ onlineMusicQuizApp.factory('Quiz',
 //Borrowed =)
 //From here everything comes from http://jsfiddle.net/JMPerez/0u0v7e1b/
 // find template and compile it
-var templateSource = document.getElementById('results-template').innerHTML;
-var template = Handlebars.compile(templateSource);
-var resultsPlaceholder = document.getElementById('results');
-var playingCssClass = 'playing';
-var audioObject = null;
-
-var fetchTracks = function (albumId, callback) {
-    $.ajax({
-        url: 'https://api.spotify.com/v1/albums/' + albumId,
-        success: function (response) {
-            callback(response);
-        }
-    });
-};
-
-var searchAlbums = function (query) {
-    $.ajax({
-        url: 'https://api.spotify.com/v1/search',
-        data: {
-            q: query,
-            type: 'album'
-        },
-        success: function (response) {
-            resultsPlaceholder.innerHTML = template(response);
-        }
-    });
-};
-
-results.addEventListener('click', function (e) {
-    var target = e.target;
-    if (target !== null && target.classList.contains('cover')) {
-        if (target.classList.contains(playingCssClass)) {
-            audioObject.pause();
-        } else {
-            if (audioObject) {
-                audioObject.pause();
-            }
-            fetchTracks(target.getAttribute('data-album-id'), function (data) {
-                audioObject = new Audio(data.tracks.items[0].preview_url);
-                audioObject.play();
-                target.classList.add(playingCssClass);
-                audioObject.addEventListener('ended', function () {
-                    target.classList.remove(playingCssClass);
-                });
-                audioObject.addEventListener('pause', function () {
-                    target.classList.remove(playingCssClass);
-                });
-            });
-        }
-    }
-});
-
-document.getElementById('search-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    searchAlbums(document.getElementById('query').value);
-}, false);
+// var templateSource = document.getElementById('results-template').innerHTML;
+// var template = Handlebars.compile(templateSource);
+// var resultsPlaceholder = document.getElementById('results');
+// var playingCssClass = 'playing';
+// var audioObject = null;
+//
+// var fetchTracks = function (albumId, callback) {
+//     $.ajax({
+//         url: 'https://api.spotify.com/v1/albums/' + albumId,
+//         success: function (response) {
+//             callback(response);
+//         }
+//     });
+// };
+//
+// var searchAlbums = function (query) {
+//     $.ajax({
+//         url: 'https://api.spotify.com/v1/search',
+//         data: {
+//             q: query,
+//             type: 'album'
+//         },
+//         success: function (response) {
+//             resultsPlaceholder.innerHTML = template(response);
+//         }
+//     });
+// };
+//
+// results.addEventListener('click', function (e) {
+//     var target = e.target;
+//     if (target !== null && target.classList.contains('cover')) {
+//         if (target.classList.contains(playingCssClass)) {
+//             audioObject.pause();
+//         } else {
+//             if (audioObject) {
+//                 audioObject.pause();
+//             }
+//             fetchTracks(target.getAttribute('data-album-id'), function (data) {
+//                 audioObject = new Audio(data.tracks.items[0].preview_url);
+//                 audioObject.play();
+//                 target.classList.add(playingCssClass);
+//                 audioObject.addEventListener('ended', function () {
+//                     target.classList.remove(playingCssClass);
+//                 });
+//                 audioObject.addEventListener('pause', function () {
+//                     target.classList.remove(playingCssClass);
+//                 });
+//             });
+//         }
+//     }
+// });
+//
+// document.getElementById('search-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     searchAlbums(document.getElementById('query').value);
+// }, false);
 
 
 
   // // API request (UNFINISHED)
-  // this.MusicSearch = $resource('https://api.spotify.com',{},{
+  this.MusicSearch = $resource('https://api.spotify.com/v1/search',{},{
+    get: {}
+  });
 
-  // });
   this.trackReturn = $resource('https://api.spotify.com/v1/tracks/:id', {}, {
+    get: {}
+  });
+
+
+  // test function --> will not keep
+  //TODO: take off when sidebarCtrl finished
+  this.severalTracks = $resource('https://api.spotify.com/v1/albums/:id/tracks', {}, {
     get: {}
   });
 
