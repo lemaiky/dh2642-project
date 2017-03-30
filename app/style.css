@@ -16,9 +16,12 @@ html , body {
 }
 
 .header h1 {
+	position:absolute;
+	left:85px;
+	top:12px;
 	text-align:left;
-	padding-left:40px;
-	padding:20px;
+
+
 	color:white;
 }
 
@@ -29,6 +32,7 @@ body {
 
 .sidebar {
   position:absolute;
+	padding-top:40px;
   top:100px;
   left:0px;
   width:350px;
