@@ -1,9 +1,11 @@
 onlineMusicQuizApp.controller('SearchCtrl', ['$scope','Quiz', function($scope,Quiz) {
-  //TODO
+  $scope.addAlbum = function(album) {
+    Quiz.addAlbumToQuiz(album);
+  }
 
 
 
-  
+
   // //including the case while the search is still running.
   // $scope.search = function(query,type) {
   // //  $scope.searchButtonText = "Searching...";
