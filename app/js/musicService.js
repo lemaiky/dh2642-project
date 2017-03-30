@@ -101,15 +101,15 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
 
 
 
-
-
-
   // // API request (UNFINISHED)
   // this.MusicSearch = $resource('https://api.spotify.com',{},{
 
   // });
+  this.trackReturn = $resource('https://api.spotify.com/v1/tracks/:id', {}, {
+    get: {}
+  });
 
-  // $ curl "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10"
+  //$ curl "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10"
 
 // https://developer.spotify.com/web-api/console/get-artist-albums/
 // Get several albums     ://api.spotify.com/v1/albums

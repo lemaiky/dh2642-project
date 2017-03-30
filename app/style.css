@@ -6,7 +6,7 @@ html , body {
 }
 
 .header {
-  position:absolute;
+  position:fixed;
   top:0px;
   left:0px;
   height:100px;
@@ -18,7 +18,12 @@ html , body {
 	text-align:left;
 	padding-left: 40px;
 	padding:20px;
-	color:white;"
+	color:white;
+}
+
+body {
+	position: fixed;
+	overflow: scroll;
 }
 
 .sidebar {
