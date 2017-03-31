@@ -4,6 +4,9 @@ onlineMusicQuizApp.controller('SearchCtrl', ['$scope','Quiz', function($scope,Qu
     Quiz.addAlbumToQuiz(album);
   }
 
+  $scope.list1 = {title: 'AngularJS - Drag Me'};
+  $scope.list2 = {};
+  
   // //including the case while the search is still running.
   $scope.search = function(query,type) {
   //  $scope.searchButtonText = "Searching...";
