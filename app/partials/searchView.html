@@ -87,6 +87,13 @@
 
 	<body>
 		<div id="wrapper">
+
+
+			<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
+			<div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div>
+
+
+
 			<table id="searchTable">
 				<tr ng-repeat="artist in music">
 					<td>
