@@ -4,6 +4,11 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
   $scope.setNumberOfQuestions = function(number) {
     Quiz.setNumberOfQuestions(number);
   }
-  $scope.list1 = {title: 'AngularJS - Drag Me'};
-  $scope.list2 = {};
+  //$scope.list1 = {title: 'AngularJS - Drag Me'};
+  $scope.list2 = [];
+
+  //$scope.music = {};
+  $scope.setAlbums = function() {
+    
+  };
 });

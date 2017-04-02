@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<title>Search</title>
-	</head>
-
-	<style>
+<style>
 	*{
 		margin: 0px;
 		padding: 0px;
@@ -70,7 +63,10 @@
 		left:350px;
 		padding:50px;
 	}
-
+	.listlink {
+		color: black;
+		cursor: pointer;
+	}
 	</style>
 
   <ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
@@ -85,41 +81,23 @@
 		<div id="results"></div>
 	</div>
 
-	<body>
 		<div id="wrapper">
 
 
 			<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
-			<div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div>
-
-
+			<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
 
 			<table id="searchTable">
 				<tr ng-repeat="artist in music">
-					<td>
-						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
-						<div id="artistName">
-							{{artist.name}}
-						</div>
+					<td data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-click="addToDrag(artist)">
+						<a class="listlink" ng-href="#!/details/{{artist.id}}">
+							<img id="artistCover" ng-src="{{artist.images[0].url}}">
+							<div id="artistName">
+								{{artist.name}}
+							</div>
+						</a>
 					</td>
 				</tr>
-				<!-- <tr>
-					<td>
-						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
-						<div id="artistName">
-							{{artist.name}}
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img id="artistCover" src="https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527">
-						<div id="artistName">
-							{{artist.name}}
-						</div>
-					</td>
-				</tr> -->
 			</table>
 		</div>
-	</body>
  </html>
