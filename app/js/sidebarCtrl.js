@@ -9,6 +9,14 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
 
   //$scope.music = {};
   $scope.setAlbums = function() {
-    
+
   };
+
+  $scope.removeMusic = function(artist) {
+    for (var i in $scope.list2) {
+      if (artist.name == $scope.list2[i].name) {
+        $scope.list2.splice(i, 1);
+      }
+    }
+  }
 });
