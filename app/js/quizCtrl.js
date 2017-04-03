@@ -59,6 +59,10 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     if($scope.answer == $scope.track.name) {
       Quiz.setNumberOfCorrectAnswers(Quiz.getNumberOfCorrectAnswers() + 1);
       console.log(Quiz.getNumberOfCorrectAnswers());
+      Quiz.addAnswerToListOfAnswers($scope.answer, "Correct");
+    }
+    else {
+      Quiz.addAnswerToListOfAnswers($scope.answer, "False");
     }
   }
 });
