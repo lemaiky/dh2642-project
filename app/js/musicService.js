@@ -4,6 +4,7 @@ onlineMusicQuizApp.factory('Quiz',
   var numberOfQuestions = $cookies.put('numberOfQuestions', 5);
   var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
   var albums = [];
+  var listOfAnswers = [];
 
   // Set the number of questions in the quiz
   this.setNumberOfQuestions = function(number) {
@@ -28,6 +29,17 @@ onlineMusicQuizApp.factory('Quiz',
   // Get the list of chosen music (UNFINISHED)
   this.getChosenQuizMusic = function() {
     }
+
+  this.getListOfAnswers = function() {
+    return listOfAnswers;
+  }
+
+  this.addAnswerToListOfAnswers = function(question, correction) {
+    listOfAnswers.push({
+    key:   question,
+    value: correction
+    });
+  }
 
   // Add new music e.g. album or artist (UNFINISHED)
   this.addAlbumToQuiz = function(music) {
