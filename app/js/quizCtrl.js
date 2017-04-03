@@ -18,6 +18,10 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     }
   }
 
+  $scope.endQuiz = function() {
+    $scope.processAnswer();
+  }
+
   //TODO: $scope.allTracks = Quiz.getChosenQuizMusic();
   $scope.allTracks = Quiz.severalTracks.get({id:'4OHNH3sDzIxnmUADXzv2kT'}, function(tracks) {
     $scope.track = tracks.items[$scope.questionNumber - 1];
