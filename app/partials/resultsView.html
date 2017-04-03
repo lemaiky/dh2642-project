@@ -1,3 +1,14 @@
+<style>
+table{
+    table-layout: fixed;
+    width: 400px;
+}
+h4 {
+  color:white;
+}
+
+</style>
+
 <div id="result">
 
   <div id="resultSummary">
@@ -8,7 +19,19 @@
 
   <div id="quizInfo">
     <h2 style="text-align:center;padding:35px;color:white;">Here's a summary of your answers</h2>
-    <div ng-repeat="song in quizSongs" >
-      <p style="text-align:center;color:white;">{{ song.rightOrFalseAnswer song.questionNr: song.title by song.bandName }}</p>
+    <div ng-repeat="answer in listOfAnswers track by $index" style="padding-left:40%;" >
+      <table>
+        <colgroup>
+          <col style="width:10%">
+          <col style="width:70%">
+          <col style="width:20%">
+        </colgroup>
+        <tr>
+          <td> <h4> {{ $index + 1 }} </h4> </td>
+          <td> <h4> {{ answer.key }} </h4> </td>
+          <td> <h4> {{ answer.value}} </h4> </td>
+        </tr>
+      </table>
+      <!--<p style="text-align:center;color:white;"> {{ $index + 1 }} {{ answer.key }} {{ answer.value}}</p>-->
   </div>
 </div>
