@@ -89,7 +89,7 @@
 
 			<table id="searchTable">
 				<tr ng-repeat="artist in music">
-					<td data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-click="addToDrag(artist)">
+					<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true, onDrag:'addToDrag(this)'}">
 						<a class="listlink" ng-href="#!/details/{{artist.id}}">
 							<img id="artistCover" ng-src="{{artist.images[0].url}}">
 							<div id="artistName">
