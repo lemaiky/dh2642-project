@@ -10,9 +10,17 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
 
   $scope.saveList = function() {
     for(var i in $scope.list2) {
-      Quiz.addAlbumToQuiz($scope.list2[i], 'artist');
-      $scope.listView = Quiz.getChosenQuizMusic();
+      var contains = false;
+      for(var j in $scope.listView) {
+          if($scope.listView[j].id === $scope.list2[i].id)
+            contains = true;
+      }
+
+      if(!contains) {
+        Quiz.addAlbumToQuiz($scope.list2[i], 'artist');
+      }
     }
+    $scope.listView = Quiz.getChosenQuizMusic();
   };
 
   $scope.listView = Quiz.getChosenQuizMusic();
