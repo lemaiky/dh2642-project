@@ -17,6 +17,7 @@
 
 	table#searchTable tr{
 		height: 80px;
+		margin: 10px:
 	}
 
 	#imgCropper {
@@ -50,7 +51,20 @@
 		top:100px;
 		left:350px;
 		padding:50px;
+		width: 50%;
 	}
+	
+	#search-form {
+		display: -webkit-box;
+		-webkit-box-orient: horizontal;
+	}
+	
+	#query {
+		width: 75%;
+		min-width: 300px;
+		margin-right: 10px;
+	}
+	
 	.listlink {
 		color: black;
 		cursor: pointer;
@@ -61,13 +75,12 @@
 
 	<div class="container">
 		<form id="search-form">
-			<input type="text" ng-model="query" id="query" value="" class="form-control" placeholder="Search for artist"/>
+			<input type="text" ng-model="query" id="query" value="" class="form-control" placeholder="Search for artist"/>			
 			<input type="submit" id="search" class="btn btn-primary" value="Search" ng-click="search(query)"/>
 		</form>
 		<div id="results"></div>
 	</div>
 		<div id="wrapper">
-
 			<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
 			<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
 
