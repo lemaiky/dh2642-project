@@ -1,23 +1,62 @@
 <style>
+	#searchDiv {
+		position:fixed;
+		top:100px;
+		left:350px;
+		padding:50px;
+		width: 70%;
+	}
+	
+	#search-form {
+		display: -webkit-box;
+		-webkit-box-orient: horizontal;
+	}
+	
+	#artist {
+		width: 60%;
+		min-width: 300px;
+		margin-right: 10px;
+	}
+	
+	.listlink {
+		color: black;
+		cursor: pointer;
+	
+	}
 	#wrapper {
 		max-width: 1000px;
-		margin: 20px;
-		position: absolute;
-		top:330px;
-		left: 400px;
+		position: relative;
+		width: 70%
+		height: 50%;
+	}
+	
+	#artistFieldWrapper{
+		position:fixed;
+		top:250px;
+		left:350px;
+		padding-left:20px;
+		padding-right:20px;
+		width: 70%;
+		height: 100%;
+		overflow:auto
 	}
 
 	table#searchTable tr:nth-child(even) {
-    background-color: #eee;
+		background-color: #eee;
 	}
 
 	table#searchTable{
+		display: -webkit-box;
 		width: 100%;
+		min-width: 400px;
+		-webkit-box-flex: 1;
 	}
 
 	table#searchTable tr{
 		height: 80px;
 		margin: 10px:
+		width: 100%;
+		-webkit-box-flex: 1;
 	}
 
 	#imgCropper {
@@ -46,55 +85,33 @@
 		height: 75px;
 	}
 
-	.container {
-		position:absolute;
-		top:100px;
-		left:350px;
-		padding:50px;
-		width: 50%;
-	}
-	
-	#search-form {
-		display: -webkit-box;
-		-webkit-box-orient: horizontal;
-	}
-	
-	#query {
-		width: 75%;
-		min-width: 300px;
-		margin-right: 10px;
-	}
-	
-	.listlink {
-		color: black;
-		cursor: pointer;
-	}
 	</style>
 
 	<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
 
-	<div class="container">
+	<div id="searchDiv">
 		<form id="search-form">
-			<input type="text" ng-model="query" id="query" value="" class="form-control" placeholder="Search for artist"/>			
+			<input type="text" ng-model="query" id="artist" value="" class="form-control" placeholder="Search for artist"/>			
 			<input type="submit" id="search" class="btn btn-primary" value="Search" ng-click="search(query)"/>
 		</form>
 		<div id="results"></div>
 	</div>
-		<div id="wrapper">
-			<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
-			<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
+	
+	<div id="artistFieldWrapper">
+	<div id="wrapper">
+		<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
+		<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
 
-			<table id="searchTable">
-				<tr ng-repeat="artist in music">
-					<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true, onDrag:'addToDrag(this)'}">
-						<a class="listlink" ng-href="#!/details/{{artist.id}}">
-							<img id="artistCover" ng-src="{{artist.images[0].url}}">
-							<div id="artistName">
-								{{artist.name}}
-							</div>
-						</a>
-					</td>
-				</tr>
-			</table>
-		</div>
+		<table id="searchTable">
+			<tr ng-repeat="artist in music">
+				<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true, onDrag:'addToDrag(this)'}">
+					<a class="listlink" ng-href="#!/details/{{artist.id}}">
+						<img id="artistCover" ng-src="{{artist.images[0].url}}">
+						<div id="artistName">{{artist.name}}</div>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
  </html>
