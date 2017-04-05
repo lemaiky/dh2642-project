@@ -55,6 +55,11 @@ onlineMusicQuizApp.factory('Quiz',
     get: {}
   });
 
+
+  this.artistsAlbums = $resource('https://api.spotify.com/v1/artists/:id/albums', {}, {
+    get: {}
+  });
+
 // https://developer.spotify.com/web-api/console/get-artist-albums/
 // Get several albums     ://api.spotify.com/v1/albums
 // Get several artists    : https://api.spotify.com/v1/artists
