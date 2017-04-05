@@ -6,22 +6,22 @@
 		padding:50px;
 		width: 70%;
 	}
-	
+
 	#search-form {
 		display: -webkit-box;
 		-webkit-box-orient: horizontal;
 	}
-	
+
 	#artist {
 		width: 60%;
 		min-width: 300px;
 		margin-right: 10px;
 	}
-	
+
 	.listlink {
 		color: black;
 		cursor: pointer;
-	
+
 	}
 	#wrapper {
 		max-width: 1000px;
@@ -29,7 +29,7 @@
 		width: 70%
 		height: 50%;
 	}
-	
+
 	#artistFieldWrapper{
 		position:fixed;
 		top:250px;
@@ -45,10 +45,10 @@
 		background-color: #eee;
 	}
 
-	::-webkit-scrollbar { 
-    display: none; 
+	::-webkit-scrollbar {
+    display: none;
 	}
-	
+
 	table#searchTable{
 		display: -webkit-box;
 		width: 100%;
@@ -67,14 +67,14 @@
 		opacity: 0.6;
 		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
 	}
-	
+
 	table#searchTable tr:hover{
 		opacity: 1;
 		margin-top: 12px;
 		margin-bottom: 12px;
 		background: #1ec7e6;
 	}
-	
+
 	#artistCover {
 		float: left;
 		margin: 10 auto;
@@ -101,12 +101,12 @@
 
 	<div id="searchDiv">
 		<form id="search-form">
-			<input type="text" ng-model="query" id="artist" value="" class="form-control" placeholder="Search for artist"/>			
+			<input type="text" ng-model="query" id="artist" value="" class="form-control" placeholder="Search for artist"/>
 			<input type="submit" id="search" class="btn btn-primary" value="Search" ng-click="search(query)"/>
 		</form>
 		<div id="results"></div>
 	</div>
-	
+
 	<div id="artistFieldWrapper">
 	<div id="wrapper">
 		<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
@@ -114,7 +114,7 @@
 
 		<table id="searchTable">
 			<tr ng-repeat="artist in music">
-				<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true, onDrag:'addToDrag(this)'}">
+				<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true,placeholder:'keep',onDrag:'addToDrag(this)'}">
 					<a class="listlink" ng-href="#!/details/{{artist.id}}">
 						<img id="artistCover" ng-src="{{artist.images[0].url}}">
 						<div id="artistName">{{artist.name}}</div>

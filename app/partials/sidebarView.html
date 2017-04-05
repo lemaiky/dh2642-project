@@ -24,7 +24,7 @@ ul#listTable {
 		<h4 style="text-align:center;color:white;">Nr of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)"/></h4>
 		<h4 style="text-align:center;color:white;">Music</h4>
 	</div>
-    <div class="dropTable" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable="{onDrop: 'saveList()'}">
+    <div class="dropTable" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable="{multiple:true,onDrop:'saveList()'}">
       <div ng-hide="listView.length > 0">Drag and drop music here</div>
       <ul id="listTable">
         <li ng-repeat="item in listView">
