@@ -2,7 +2,7 @@
 
 <style>
 .sidebar {
-  height: 100%
+  position: fixed;
 }
 .dropTable {
   background-color:white;
@@ -19,11 +19,11 @@ ul#listTable {
 </style>
 
 <div class="sidebar">
-  <div><h2 style="text-align:center;color:white;">Settings</h2>
-  <hr>
-  <h4 style="text-align:center;color:white;">Nr of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)"/></h3>
-  <h4 style="text-align:center;color:white;">Music</h2>
-</div>
+	<div><h2 style="text-align:center;color:white;">Settings</h2>
+		<hr>
+		<h4 style="text-align:center;color:white;">Nr of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)"/></h4>
+		<h4 style="text-align:center;color:white;">Music</h4>
+	</div>
     <div class="dropTable" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable="{onDrop: 'saveList()'}">
       <div ng-hide="listView.length > 0">Drag and drop music here</div>
       <ul id="listTable">
@@ -40,9 +40,8 @@ ul#listTable {
       {{artist.title}}
       <button class="glyphicon glyphicon-trash btn-md" ng-click="removeMusic(x);"></button>
     </div> -->
-  <hr id="horisontalLine"></hr>
+	<hr id="horisontalLine"></hr>
     <div id="start-quiz-button">
-      <a ng-href="#!/quiz" style="padding-left:35%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>
+		<a ng-href="#!/quiz" style="padding-left:35%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>
     </div>
-
-  </div>
+</div>
