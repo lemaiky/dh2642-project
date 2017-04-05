@@ -56,29 +56,37 @@
 	}
 
 	table#searchTable tr{
+		display: -webkit-box;
+		-webkit-box-pack: center;
+		display: inline-block;
 		height: 80px;
-		margin: 10px:
+		margin: 4px auto;
 		width: 100%;
+		min-width: 400px;
+		-webkit-border-radius:10px;
+		opacity: 0.6;
+		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
 	}
-
-	#imgCropper {
-		width: 75px;
-		height: auto;
-		position: relative;
-		overflow: hidden;
+	
+	table#searchTable tr:hover{
+		opacity: 1;
+		margin-top: 12px;
+		margin-bottom: 12px;
+		background: #1ec7e6;
 	}
-
+	
 	#artistCover {
 		float: left;
 		margin: 10 auto;
 		margin-left: 10px;
-		height: 75px;
-		width: 75px;
+		height: 80px;
+		width: 80px;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
 		-ms-border-radius: 50%;
 		-o-border-radius: 50%;
 		border-radius: 50%;
+
 	}
 
 	#artistName {
