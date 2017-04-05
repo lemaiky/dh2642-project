@@ -1,54 +1,92 @@
 <style>
-	*{
-		margin: 0px;
-		padding: 0px;
+	#searchDiv {
+		position:fixed;
+		top:100px;
+		left:350px;
+		padding:50px;
+		width: 70%;
 	}
-
-	body {
-		width: 100%;
-
+	
+	#search-form {
 		display: -webkit-box;
-		-webkit-box-pack: center;
+		-webkit-box-orient: horizontal;
 	}
-
+	
+	#artist {
+		width: 60%;
+		min-width: 300px;
+		margin-right: 10px;
+	}
+	
+	.listlink {
+		color: black;
+		cursor: pointer;
+	
+	}
 	#wrapper {
 		max-width: 1000px;
-		margin: 20px;
-		position: absolute;
-		top:330px;
-		left: 400px;
+		position: relative;
+		width: 70%
+		height: 50%;
+	}
+	
+	#artistFieldWrapper{
+		position:fixed;
+		top:250px;
+		left:350px;
+		padding-left:20px;
+		padding-right:20px;
+		width: 70%;
+		height: 100%;
+		overflow:auto
 	}
 
 	table#searchTable tr:nth-child(even) {
-    background-color: #eee;
+		background-color: #eee;
 	}
 
+	::-webkit-scrollbar { 
+    display: none; 
+	}
+	
 	table#searchTable{
+		display: -webkit-box;
 		width: 100%;
+		min-width: 400px;
 	}
 
 	table#searchTable tr{
+		display: -webkit-box;
+		-webkit-box-pack: center;
+		display: inline-block;
 		height: 80px;
+		margin: 4px auto;
+		width: 100%;
+		min-width: 400px;
+		-webkit-border-radius:10px;
+		opacity: 0.6;
+		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
 	}
-
-	#imgCropper {
-		width: 75px;
-		height: auto;
-		position: relative;
-		overflow: hidden;
+	
+	table#searchTable tr:hover{
+		opacity: 1;
+		margin-top: 12px;
+		margin-bottom: 12px;
+		background: #1ec7e6;
 	}
-
+	
 	#artistCover {
 		float: left;
 		margin: 10 auto;
 		margin-left: 10px;
-		height: 75px;
-		width: 75px;
+		height: 80px;
+		width: 80px;
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
 		-ms-border-radius: 50%;
 		-o-border-radius: 50%;
 		border-radius: 50%;
+
 	}
 
 	#artistName {
@@ -57,47 +95,33 @@
 		height: 75px;
 	}
 
-	.container {
-		position:absolute;
-		top:100px;
-		left:350px;
-		padding:50px;
-	}
-	.listlink {
-		color: black;
-		cursor: pointer;
-	}
 	</style>
 
-  <ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
+	<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
 
-	<div class="container">
-		<h1>Search for an Artist</h1>
-		<p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
+	<div id="searchDiv">
 		<form id="search-form">
-			<input type="text" ng-model="query" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+			<input type="text" ng-model="query" id="artist" value="" class="form-control" placeholder="Search for artist"/>			
 			<input type="submit" id="search" class="btn btn-primary" value="Search" ng-click="search(query)"/>
 		</form>
 		<div id="results"></div>
 	</div>
+	
+	<div id="artistFieldWrapper">
+	<div id="wrapper">
+		<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
+		<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
 
-		<div id="wrapper">
-
-
-			<!-- drag and drop example code: http://codef0rmer.github.io/angular-dragdrop/#!/ -->
-			<!-- <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div> -->
-
-			<table id="searchTable">
-				<tr ng-repeat="artist in music">
-					<td data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-click="addToDrag(artist)">
-						<a class="listlink" ng-href="#!/details/{{artist.id}}">
-							<img id="artistCover" ng-src="{{artist.images[0].url}}">
-							<div id="artistName">
-								{{artist.name}}
-							</div>
-						</a>
-					</td>
-				</tr>
-			</table>
-		</div>
+		<table id="searchTable">
+			<tr ng-repeat="artist in music">
+				<td id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true, onDrag:'addToDrag(this)'}">
+					<a class="listlink" ng-href="#!/details/{{artist.id}}">
+						<img id="artistCover" ng-src="{{artist.images[0].url}}">
+						<div id="artistName">{{artist.name}}</div>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
  </html>

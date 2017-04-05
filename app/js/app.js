@@ -1,38 +1,54 @@
-// We setup the main Angular model that we will use for our application
-// Good Angular practice is to organize your code in different modules,
-// for instance, one module per feature. However, since our App is
-// simple we will keep all the code in the "dinnerPlanner" module
-//
-// Notice the 'ngRoute' and 'ngResource' in the module declaration. Those are some of the core Angular
-// modules we are going to use in this app. If you check the index.html you will
-// also see that we included separate JavaScript files for these modules. Angular
-// has other core modules that you might want to use and explore when you go deeper
-// into developing Angular applications. For this lab, these two will suffice.
 var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop']);
 
 
-// Here we configure our application module and more specifically our $routeProvider.
-// Route provider is used to tell angular to load a specific partial (view) for an individual
-// specific address that is provided in the browser. This enables us to change the browser address
-// even if we are not reloading the page. We can also use back and forward button to navigate between
-// our screens. The paths that you use in the conditions of $routeProvider will be shown in the address
-// bar after the # sign. So, for instance, the home path will be 'http://localhost:8000/#/home'.
-// In index.html you will notice the <div ng-view></div> tag. This is where the specific view sill be
-// loaded. For instance when you go to http://localhost:8000/, since your path does not match any
-// of the when conditions, the otherwise condition is triggered and tells the app to redirect to '/home'.
-// The '/home' condition then loads the 'partials/home.html'.
-//
-// Apart from specifying the partial HTML that needs to be loaded with your app, you can also specify which
-// controller should be responsible for that view. In the controller you will setup the initial data or
-// access the data from the model and create the methods that you will link to events. Remember, controllers
-// can be nested, so you can have one controller responsible for the whole view, but then another one for
-// some sub part of the view. In such way you can reuse your controller on different parts of the view that
-// might have similar logic.
-//
-// In some cases we want the path to be variable (e.g. contain the dish id). To define the variable part of
-// the path we use the ":" sign. For instance, our '/dish/:dishId' will be triggered when we access
-// 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
-// then access through $routeParams service. More information on this in the dishCtrl.js
+/*
+TO-DO LIST April 5 2017
+
+- Quiz based on selected music
+- Drag and drop artists and albums from the details view
+- Fix a bug where deleted artists cannot be added again into the sidebar
+- add a headline and description of the search view so that the user better can understand it
+
+Comments from classmates:
+- When you are adding songs to the quiz, it is unclear whether you add specific songs or just artists, and the website will generate songs by that artist for you.
+  Maybe you can have both options. For example if you choose Coldplay and you want 5 songs, it will randomly pick 5 Coldplay songs for you.
+- Consider the possibility of adding songs by genre as well.
+- Can you add multiple songs/artists/genres so it becomes a mixed quiz? I think that would be good.
+  Then you need to enable the user to pick the number of songs for each artist/genre.
+- Consider the possibility for users to create their own quiz, save it, and share with friends, would be very cool!
+  Then you can also do the persist data part.
+  You can also display all the quizzes created by users on an "existing quizzes" page so when a user comes to your site they can play directly on other people's quizzes if they want.
+  Then you can maybe even have "popular" quizzes and "most recently created" quizzes, etc.
+- You can also implement a highscore so that people will feel more motivated to spend many hours on your site :)
+  The highscore can be connected to the individual quizzes you saved (in the previous point).
+  So each quiz created would have its own highscore.
+- Are all questions in the form of "What is the name of the song"? In that case maybe you don't need to write "Question 1. What is the name of the song?",
+  and "Question 2. What is the name of the song?" instead you can maybe write at the top of the page "What is the name of the song?" in large text indicating that it applies to all questions.
+
+It would be nicer if you could add different type of questions instead of only have one. I mean right now you only ask for choosing the name of the song.
+  But there can be more questions like: "complete some part of the lyric", "which album it belongs to", "which year", and so on!
+  Maybe it's too much for this course project but I think it's more fun that way ;)
+
+I don't get the idea of having the "detail page". What is that for? I don't think it's necessary to show the details of songs of an album for the game.
+  Unless you want to add more features to make it a bigger website. In that case, I think you could add some features that @Beichen Chen mentioned in her comment.
+
+First, I think it would be nice to have a user system.
+  This could let you have a space like a profile for each user where they can store quizes they have solved to see the answers and also share with other users.
+
+Also I am not sure to have understood what you add to create a quiz, if it is albums form artists or it can also be just songs.
+  In this case maybe could be interesting to search by song also.
+
+Finally, I am also not sure what is the detail view for. What I get is that it is what appears after searching an artist and clicking in one of the results,
+  then you are redirected to the detail and there you can add the artist or albums. If that is the case and I have understood well, in terms of usability,
+  you could add the option to add directly the artist from the search results, without the need to enter the detail.
+  This could be useful if you are sure you want to add the artist and don't need to see the detail.
+
+Again, I think it is good idea and can be used to create a music competition with friends!
+
+*/
+
+
+
 onlineMusicQuizApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.

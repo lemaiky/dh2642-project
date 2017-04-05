@@ -1,14 +1,62 @@
+<style>
+table{
+    table-layout: fixed;
+    width: 400px;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: white;
+}
+h4 {
+  color:white;
+
+}
+
+.createNewQuizBtn {
+	font-size: 16px;
+	background-color: #39D1B4;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	height: 50px;
+	line-height: 20px;
+	text-align: center;
+	width: 125px;
+  margin-left:46%;
+  position: absolute;
+  top:66%;
+  border-style: none;
+  border-radius: 5px;
+}
+.createNewQuizBtn:hover {
+	background-color: #097054;
+	color: #fff;
+}
+
+</style>
+
 <div id="result">
 
   <div id="resultSummary">
     <h2 style="text-align:center;padding-top:40px">Congratulations!</h2>
     <h2 style="text-align:center;padding:20px;">You answered <span class="nog5"></span>{{ score }} out of {{ numberOfQuestions }} questions correctly!</h2>
-    <a ng-href="#!/search"><button type="button" class="quizButton">Create new quiz!</button></a>
+    <a ng-href="#!/search"><button type="button" class="createNewQuizBtn">Create new quiz!</button></a>
   </div>
 
   <div id="quizInfo">
     <h2 style="text-align:center;padding:35px;color:white;">Here's a summary of your answers</h2>
-    <div ng-repeat="song in quizSongs" >
-      <p style="text-align:center;color:white;">{{ song.rightOrFalseAnswer song.questionNr: song.title by song.bandName }}</p>
+    <div ng-repeat="answer in listOfAnswers track by $index" style="padding-left:40%;" >
+      <table>
+        <colgroup>
+          <col style="width:11%">
+          <col style="width:70%">
+          <col style="width:19%">
+        </colgroup>
+        <tr>
+          <td> <h4 style="text-align:left"> {{ $index + 1 + '.'}} </h4> </td>
+          <td> <h4> {{ answer.key }} </h4> </td>
+          <td> <h4 style="text-align:right"> {{ answer.value}} </h4> </td>
+        </tr>
+      </table>
+      <!--<p style="text-align:center;color:white;"> {{ $index + 1 }} {{ answer.key }} {{ answer.value}}</p>-->
   </div>
+</div>
 </div>

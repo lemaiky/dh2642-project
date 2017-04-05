@@ -1,3 +1,14 @@
+<style>
+#foot {
+  position:absolute;
+  left:0px;
+  top:780px;
+  bottom:0px;
+  width:100%;
+  background-color:#097054;
+}
+</style>
+
 <div id="quizView">
   <!-- Progress Bar -->
   <div class="progress">
@@ -20,4 +31,8 @@
     <div ng-if="questionNumber != numberOfQuestions"><button class="btn" ng-click="setNextQuestion()">Next</button></div>
     <div ng-if="questionNumber == numberOfQuestions"><a ng-href="#!/results" id="endQuizButton"><button class="btn" ng-click="endQuiz()">Finish</button></a></div>
   </div>
+
+  <div id="foot">
+
+</div>
 </div>
