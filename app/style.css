@@ -37,19 +37,23 @@ html , body {
 }
 
 .quizButton {
+	font-size: 16px;
 	background-color: #39D1B4;
- 	color: #fff;
- 	font-size: 18px;
- 	border-radius: 90%;
- 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  font-weight: 200;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 	height: 50px;
 	line-height: 20px;
 	text-align: center;
-	width: 150px;
-	right: 0px;
-  margin-left:46%;
-}
+	width: 125px;
+	right:-50px;
+	margin-left:46%;
+	position: absolute;
+	top:66%;
+	}
+.quizButton:hover {
+	background-color: #097054;
+	color: #fff;
+	}
 /**********************************************************
 *	HOME VIEW
 **********************************************************/
