@@ -49,6 +49,8 @@ html , body {
 	margin-left:46%;
 	position: absolute;
 	top:66%;
+	border-style:none;
+	border-radius: 5px;
 	}
 .quizButton:hover {
 	background-color: #097054;

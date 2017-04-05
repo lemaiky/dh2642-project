@@ -10,6 +10,8 @@
   width:300px;
   min-height: 150px;
   border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
   text-align: center;
   padding-top:15%;
 }
@@ -27,6 +29,8 @@ ul#listTable {
 	line-height: 20px;
 	text-align: center;
 	width: 125px;
+  border-radius: 5px;
+  border-style: none;
 }
 #con-btn:hover {
 	background-color: #097054;
@@ -38,7 +42,7 @@ ul#listTable {
 <div class="sidebar">
 	<div><h2 style="text-align:center;color:white;">Settings</h2>
 		<hr>
-		<h4 style="text-align:center;color:white;">Nr of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)"/></h4>
+		<h4 style="text-align:center;color:white;">Nr of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)" min="1" max="20"/></h4>
 		<h4 style="text-align:center;color:white;">Music</h4>
 	</div>
     <div class="dropTable" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable="{multiple:true,onDrop:'saveList()'}">
@@ -59,6 +63,6 @@ ul#listTable {
     </div> -->
 	<hr id="horisontalLine"></hr>
     <div id="start-quiz-button">
-		<a ng-href="#!/quiz" style="padding-left:32%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>
+		<a ng-href="#!/quiz" style="padding-left:35%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>
     </div>
 </div>
