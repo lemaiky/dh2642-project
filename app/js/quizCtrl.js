@@ -23,11 +23,12 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
   }
 
   //TODO: $scope.allTracks = Quiz.getChosenQuizMusic();
-  $scope.allTracks = Quiz.severalTracks.get({id:'4OHNH3sDzIxnmUADXzv2kT'}, function(tracks) {
-    $scope.track = tracks.items[$scope.questionNumber - 1];
-    $scope.setOptions(tracks.items);
-    return tracks;
-  })
+  $scope.allTracks = Quiz.getQuizQuestion();
+  // $scope.allTracks = Quiz.severalTracks.get({id:'4OHNH3sDzIxnmUADXzv2kT'}, function(tracks) {
+  //   $scope.track = tracks.items[$scope.questionNumber - 1];
+  //   $scope.setOptions(tracks.items);
+  //   return tracks;
+  // })
 
   $scope.setOptions = function(tracks) {
     var length = tracks.length;

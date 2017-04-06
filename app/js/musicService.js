@@ -28,10 +28,11 @@ onlineMusicQuizApp.factory('Quiz',
   }
 
   // Get the list of chosen music (UNFINISHED)
-  this.getChosenQuizMusic = function() {
+  this.getChosenQuizMusic = function(callback) {
     albums = $cookies.get("albums");
     artists = $cookies.get("artists");
     var list = new Array();
+
     if(albums && albums.length > 0) {
       albums = albums.split(',');
       for(var i in albums) {
@@ -45,6 +46,39 @@ onlineMusicQuizApp.factory('Quiz',
       for(var j in artists) {
         this.GetArtist.get({id: artists[j]}, function(artist) {
           list.push(artist);
+        });
+      }
+    }
+    return list;
+  }
+
+  this.getQuizQuestion = function() {
+    var nbOfQuestions = this.getNumberOfQuestions();
+    var questions = new Array(nbOfQuestions);
+
+    albums = $cookies.get("albums");
+    artists = $cookies.get("artists");
+    var list = "";
+
+    if(!albums || albums.length <= 0) {
+      albums = new Array();
+    }
+
+    if(artists && artists.length > 0) {
+      artists = artists.split(',');
+      for(var i in artists) {
+        this.GetArtistAlbums.get({id:artists[i]}, function(allAlbums) {
+          for(var j in allAlbums.items) {
+            albums.push(allAlbums.items[j].id);
+          }
+
+          for(var i = 0; i < nbOfQuestions; i++) {
+            var index = Math.floor(Math.random() * albums.length - 1);
+            this.GetFullAlbum.get({id: albums[index]}, function(fullAlbum) {
+              console.log(fullAlbum);
+            });
+          }
+
         });
       }
     }
