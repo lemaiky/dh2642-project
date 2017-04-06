@@ -1,6 +1,5 @@
 onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
 
-  $scope.options = new Array(3);
   $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
   $scope.questionNumber = 1;
   $scope.progressValue = $scope.questionNumber / $scope.numberOfQuestions * 100;
@@ -13,47 +12,53 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     if($scope.questionNumber < $scope.numberOfQuestions) {
       $scope.questionNumber++;
       $scope.progressValue = $scope.questionNumber / $scope.numberOfQuestions * 100;
-      $scope.track = $scope.allTracks.items[$scope.questionNumber - 1];
-      $scope.setOptions($scope.allTracks.items);
+      $scope.options = $scope.getOptions();
     }
   }
 
   $scope.endQuiz = function() {
     $scope.processAnswer();
   }
+  
+  $scope.setOptions = function(options) {
+    var length = $scope.allTracks.length - 1;
+    $scope.track = $scope.allTracks[$scope.questionNumber - 1];
 
-  //TODO: $scope.allTracks = Quiz.getChosenQuizMusic();
-  $scope.allTracks = Quiz.getQuizQuestion();
-  // $scope.allTracks = Quiz.severalTracks.get({id:'4OHNH3sDzIxnmUADXzv2kT'}, function(tracks) {
-  //   $scope.track = tracks.items[$scope.questionNumber - 1];
-  //   $scope.setOptions(tracks.items);
-  //   return tracks;
-  // })
-
-  $scope.setOptions = function(tracks) {
-    var length = tracks.length;
-    var trackName = $scope.track.name;
-
-    $scope.options[0] = tracks[Math.floor(Math.random()*length)].name;
-    if($scope.options[0] == trackName) {
-      while($scope.options[0] == trackName)
-        $scope.options[0] = tracks[Math.floor(Math.random()*length)].name;
+    options[0] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    if(options[0] == $scope.track.name) {
+      while(options[0] == $scope.track.name)
+        options[0] = $scope.allTracks[Math.floor(Math.random()*length)].name;
     }
 
-    $scope.options[1] = tracks[Math.floor(Math.random()*length)].name;
-    if($scope.options[1] == trackName || $scope.options[1] == $scope.options[0]) {
-      while($scope.options[1] == trackName || $scope.options[1] == $scope.options[0])
-        $scope.options[1] = tracks[Math.floor(Math.random()*length)].name;
+    options[1] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    if(options[1] == $scope.track.name || options[1] == options[0]) {
+      while(options[1] == $scope.track.name || options[1] == options[0])
+        options[1] = $scope.allTracks[Math.floor(Math.random()*length)].name;
     }
 
-    $scope.options[2] = tracks[Math.floor(Math.random()*length)].name;
-    if($scope.options[2] == trackName || $scope.options[2] == $scope.options[0] || $scope.options[2] == $scope.options[1]) {
-      while($scope.options[2] == trackName || $scope.options[2] == $scope.options[0] || $scope.options[2] == $scope.options[1])
-        $scope.options[2] = tracks[Math.floor(Math.random()*length)].name;
+    options[2] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    if(options[2] == $scope.track.name || options[2] == options[0] || options[2] == options[1]) {
+      while(options[2] == $scope.track.name || options[2] == options[0] || options[2] == options[1])
+        options[2] = $scope.allTracks[Math.floor(Math.random()*length)].name;
     }
-
-    $scope.options[Math.floor(Math.random()*3)] = trackName;
+    options[Math.floor(Math.random()*2)] = $scope.track.name;
   }
+
+  $scope.getOptions = function() {
+    var options = new Array(3);
+    if($scope.allTracks && $scope.allTracks.length > 0) {
+      $scope.setOptions(options);
+
+    } else {
+      Quiz.getQuizQuestion(function(allTracks) {
+        $scope.allTracks = allTracks;
+        $scope.setOptions(options);
+      });
+    }
+    return options;
+  }
+
+  $scope.options = $scope.getOptions();
 
   $scope.selectAnswer = function(answer) {
     $scope.answer = answer;
@@ -63,7 +68,6 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     //if correct answer
     if($scope.answer == $scope.track.name) {
       Quiz.setNumberOfCorrectAnswers(Quiz.getNumberOfCorrectAnswers() + 1);
-      console.log(Quiz.getNumberOfCorrectAnswers());
       Quiz.addAnswerToListOfAnswers($scope.answer, "Correct");
     }
     else {

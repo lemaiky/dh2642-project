@@ -3,8 +3,9 @@ onlineMusicQuizApp.factory('Quiz',
 
   var numberOfQuestions = $cookies.put('numberOfQuestions', 5);
   var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
-  var albums = new Array();
-  var artists = new Array();
+  var albums = new Array();       // list of albums for sidebar view
+  var artists = new Array();      // list of artists for sidebar view
+  var quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
   // Set the number of questions in the quiz
@@ -28,7 +29,7 @@ onlineMusicQuizApp.factory('Quiz',
   }
 
   // Get the list of chosen music (UNFINISHED)
-  this.getChosenQuizMusic = function(callback) {
+  this.getChosenQuizMusic = function() {
     albums = $cookies.get("albums");
     artists = $cookies.get("artists");
     var list = new Array();
@@ -52,37 +53,27 @@ onlineMusicQuizApp.factory('Quiz',
     return list;
   }
 
-  this.getQuizQuestion = function() {
+  this.getQuizQuestion = function(callback) {
     var nbOfQuestions = this.getNumberOfQuestions();
-    var questions = new Array(nbOfQuestions);
+    var questions = new Array();
 
-    albums = $cookies.get("albums");
-    artists = $cookies.get("artists");
-    var list = "";
+    var list = this.getAlbumForQuiz();
+    var fullList = new Array();
 
-    if(!albums || albums.length <= 0) {
-      albums = new Array();
-    }
+    if(list && list.length > 0) {
+      for(var i = 0; i < nbOfQuestions; i++) {
+        var index = Math.floor(Math.random() * (list.length - 1));
+        this.GetFullAlbum.get({id: list[index]}, function(fullAlbum) {
+          var tracks = fullAlbum.tracks.items;
+          var rand = Math.floor(Math.random() * (tracks.length - 1));
+          questions.push(tracks[rand]);
 
-    if(artists && artists.length > 0) {
-      artists = artists.split(',');
-      for(var i in artists) {
-        this.GetArtistAlbums.get({id:artists[i]}, function(allAlbums) {
-          for(var j in allAlbums.items) {
-            albums.push(allAlbums.items[j].id);
+          if(questions.length === nbOfQuestions) {
+            callback(questions);
           }
-
-          for(var i = 0; i < nbOfQuestions; i++) {
-            var index = Math.floor(Math.random() * albums.length - 1);
-            this.GetFullAlbum.get({id: albums[index]}, function(fullAlbum) {
-              console.log(fullAlbum);
-            });
-          }
-
         });
       }
     }
-    return list;
   }
 
   this.getListOfAnswers = function() {
@@ -94,6 +85,11 @@ onlineMusicQuizApp.factory('Quiz',
     key:   question,
     value: correction
     });
+  }
+
+  this.resetAnswers = function() {
+    listOfAnswers = new Array();
+    this.setNumberOfCorrectAnswers(0);
   }
 
   // Add new music e.g. album or artist (UNFINISHED)
@@ -119,10 +115,39 @@ onlineMusicQuizApp.factory('Quiz',
     if(albums && albums.indexOf(musicID) != -1) {
       albums.splice(albums.indexOf(musicID), 1);
       $cookies.put("albums", albums);
+      this.removeAlbumForQuiz(musicID);
     } else if(artists && artists.indexOf(musicID) != -1) {
       artists.splice(artists.indexOf(musicID), 1);
       $cookies.put("artists", artists);
+      this.removeArtistForQuiz(musicID);
     }
+  }
+
+  this.saveAlbumForQuiz = function(albumID) {
+    quiz.push(albumID);
+    $cookies.put("quiz", quiz);
+  }
+
+  this.removeAlbumForQuiz = function(albumID) {
+    quiz.splice(quiz.indexOf(albumID), 1);
+    $cookies.put("quiz", quiz);
+  }
+
+  this.removeArtistForQuiz = function(artistID) {
+    this.GetArtistAlbums.get({id: artistID}, function(albums) {
+      for(var i in albums.items) {
+        if(quiz.indexOf(albums.items[i].id) !== -1) {
+          quiz.splice(quiz.indexOf(albums.items[i].id), 1);
+        }
+      }
+      $cookies.put("quiz", quiz);
+    });
+  }
+
+  this.getAlbumForQuiz = function() {
+    quiz = $cookies.get("quiz");
+    quiz = quiz.split(',');
+    return quiz;
   }
 
   // // API request
@@ -146,8 +171,6 @@ onlineMusicQuizApp.factory('Quiz',
     get: {}
   });
 
-  // test function --> will not keep
-  //TODO: take off when sidebarCtrl finished
   this.severalTracks = $resource('https://api.spotify.com/v1/albums/:id/tracks', {}, {
     get: {}
   });
