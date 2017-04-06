@@ -173,13 +173,13 @@ body {
             <div class="collapsible-body" ng-repeat="track in albumTracks[album.id].items"> <!--ng-repeat="songs in albumTracks(album)">-->
               <span class="song"> {{ track.name }} </span><br> <!--tracks.name-->
             </div>
-     
-          </li>          
+
+          </li>
         </ul>
 
       </div>
       <div id="confirm-Button">
-        <a href="#!/search"><button type="button" id="con-btn" class="btn btn-warning" ng-click="">Back</button></a>
+        <a ng-href="#!/search"><button type="button" id="con-btn" class="btn btn-warning">Back</button></a>
       </div>
     </div>
   </div>
@@ -235,7 +235,7 @@ body {
 
 
 
-<!-- 
+<!--
 
 <li style="vertical-align: middle">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative">
