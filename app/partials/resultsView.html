@@ -38,7 +38,7 @@ h4 {
   <div id="resultSummary">
     <h2 style="text-align:center;padding-top:40px">Congratulations!</h2>
     <h2 style="text-align:center;padding:20px;">You answered <span class="nog5"></span>{{ score }} out of {{ numberOfQuestions }} questions correctly!</h2>
-    <a ng-href="#!/search"><button type="button" class="createNewQuizBtn">Create new quiz!</button></a>
+    <a ng-href="#!/search"><button type="button" class="createNewQuizBtn" ng-click="resetAnswers()">Create new quiz!</button></a>
   </div>
 
   <div id="quizInfo">

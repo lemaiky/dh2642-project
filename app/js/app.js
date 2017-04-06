@@ -2,7 +2,7 @@ var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResou
 
 
 /*
-TO-DO LIST April 5 2017
+TODO LIST April 5 2017
 
 - Quiz based on selected music
 - Drag and drop artists and albums from the details view

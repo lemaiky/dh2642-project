@@ -17,7 +17,12 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
       }
 
       if(!contains) {
-        Quiz.addAlbumToQuiz($scope.list2[i], 'artist');
+        Quiz.addAlbumToQuiz($scope.list2[i], $scope.list2[i].type);
+        Quiz.GetArtistAlbums.get({id:$scope.list2[i].id}, function(albums) {
+          for(var i in albums.items) {
+            Quiz.saveAlbumForQuiz(albums.items[i].id);
+          }
+        });
       }
     }
     $scope.listView = Quiz.getChosenQuizMusic();
