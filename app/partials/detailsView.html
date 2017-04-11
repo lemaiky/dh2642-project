@@ -66,8 +66,10 @@ span.album-addButton {
 
 div#detailsView {
   position: absolute;
-  margin-top: 10%;
-  margin-left: 30%;
+/*  margin-top: 10%;
+  margin-left: 30%;*/
+  left: 450px;
+  top: 150px;
 }
 
 button#addButton {
@@ -90,6 +92,9 @@ ul.collapsible{
   padding: 0;
   display: inline-block;
   margin-bottom: 0.7em;
+  list-style-type: none;
+
+
 }
 
 
@@ -146,7 +151,7 @@ body {
 <div id="detailsView">
   <div class="content">
     <div id="nameAndImage" >
-      <h1> {{albums[0].artists[0].name}} </h1>
+      <h1 style="padding-left:60px;"> {{albums[0].artists[0].name}} </h1>
       <img ng-src={{albums[0].images[0].url}} style="max-width:200px;max-height:200px;">
       <div class="top-addButton">Add</div>
       <br>
@@ -170,8 +175,8 @@ body {
               <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
 
             </div>
-            <div class="collapsible-body" ng-repeat="track in albumTracks[album.id].items"> <!--ng-repeat="songs in albumTracks(album)">-->
-              <span class="song"> {{ track.name }} </span><br> <!--tracks.name-->
+            <div class="collapsible-body" style="background-color:#F0FFFF;"ng-repeat="track in albumTracks[album.id].items"> <!--ng-repeat="songs in albumTracks(album)">-->
+              <div class="song" style="bacground-color:grey;height:auto;padding-left:180px;"> {{ track.name }} </div><br><!-- tracks.name-->
             </div>
 
           </li>
