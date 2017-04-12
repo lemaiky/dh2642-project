@@ -6,12 +6,6 @@
 
   <style>
     div.top-addButton {
-     background-color: #39D1B4 ;
-     color: #fff;
-     font-size: 18px;
-     border-radius: 40%;
-     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-     font-weight: 200;
      height: 40px;
      line-height: 40px;
      text-align: center;
@@ -103,21 +97,6 @@ div#albums {
   margin-bottom: 0.7em;
   width: 20em;
 }
-/*
-span#albumName {
-  font-weight: bold;
-  //margin-left: 2em;
-}
-
-span#numberOfSongs {
-  width: 20em;
-  margin-left: 5em;
-}
-
-span#album-addButton {
-  //margin-left: 5em;
-}
-*/
 span.song {
   //margin-left: 2em;
   margin-bottom: 0;
@@ -141,9 +120,6 @@ body {
 </style>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified CSS
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">-->
-<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
 <!--Ny-->
@@ -153,25 +129,16 @@ body {
     <div id="nameAndImage" >
       <h1 style="padding-left:60px;"> {{albums[0].artists[0].name}} </h1>
       <img ng-src={{albums[0].images[0].url}} style="max-width:200px;max-height:200px;">
-      <div class="top-addButton">Add</div>
+      <div class="top-addButton"><button class="quizButton" ng-click="addAlbum()">Add</button></div>
       <br>
     </div>
     <div class="albums" >
       <h2>Albums</h2>
-
-      <!-- div class="albums">--><!-- ng-repeat="">-->
-          <!--<span class="albumName">NameOfAlbum 1 </span>
-          <span class="numberOfSongs">NumberOfSongs 1 </span>
-          <button id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
-        </div>
-
-        --><!--<div class="container work">-->
         <ul class="collapsible popout" id="albums" data-collapsible="accordion">
           <li style="vertical-align: middle" ng-repeat="album in albums">
             <div class="collapsible-header hoverable" id="albumName" style="position: relative">
-              <span class="subtitle work-text left"> <img src={{album.images[0].url}} style="max-width:35px;max-height:35px;"></span>
-              <span class="subtitle work-text center" style="padding-left: 8em">{{album.name}}</span>
-              <span class="subtitle work-text right" id="numberOfSongs">NumberOfSongs 1</span>
+              <span class="subtitle work-text left"> <img src={{album.images[0].url}} style="max-width:40px;max-height:40px;"></span>
+              <span class="subtitle work-text center" style="padding-left: 8em; font-weight: bold">{{album.name}}</span>
               <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
 
             </div>
