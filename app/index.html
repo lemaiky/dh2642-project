@@ -38,12 +38,42 @@
     ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
     <header class="header" style="display:flex;z-index:1;">
       <a ng-href="#!/home">
-      <img src="http://www.freeiconspng.com/uploads/record-icon-9.png" style="max-width:60px;max-height:60px;position:absolute;top:20px;left:20px;">
-      <h1>Online Music Quiz</h1>
-    </a>
+        <img src="http://www.freeiconspng.com/uploads/record-icon-9.png" style="max-width:60px;max-height:60px;position:absolute;top:20px;left:20px;">
+        <h1>Online Music Quiz</h1>
+      </a>
+      <div style="position:absolute;top:25px;right:25px;" class="dropdown">
+        <button class="dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-user" style="font-size: 3em;"/>
+        </button>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Saved Quiz</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Log out</a></li>
+          </ul>
+        </div>
+      </div>
     </header>
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
     where you specify which partial should be loaded when. -->
     <div id="view" ng-view></div>
+
+    <!-- firebase database scripts -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBed3PBq9L1jDyzBT6bl9lQAwMWb_WSMoY",
+        authDomain: "dh2642-project.firebaseapp.com",
+        databaseURL: "https://dh2642-project.firebaseio.com",
+        projectId: "dh2642-project",
+        storageBucket: "dh2642-project.appspot.com",
+        messagingSenderId: "2277070346"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+    </script>
+
   </body>
 </html>

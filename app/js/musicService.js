@@ -67,9 +67,11 @@ onlineMusicQuizApp.factory('Quiz',
           var tracks = fullAlbum.tracks.items;
           var rand = Math.floor(Math.random() * (tracks.length - 1));
           questions.push(tracks[rand]);
+          fullList.push(tracks[rand]);
+          fullList.push(tracks[(rand+1)%(tracks.length-1)]);
 
           if(questions.length === nbOfQuestions) {
-            callback(questions);
+            callback(questions, fullList);
           }
         });
       }
@@ -179,6 +181,35 @@ onlineMusicQuizApp.factory('Quiz',
   this.artistsAlbums = $resource('https://api.spotify.com/v1/artists/:id/albums', {}, {
     get: {}
   });
+
+  this.writeUserData = function(userId, username, email) {
+    firebase.database().ref('users/' + userId).set({
+      username: username,
+      email: email
+    });
+  };
+
+  this.writeQuiz = function(uid, username, artists, quiz, score) {
+    // A post entry.
+    var quizData = {
+      author: username,
+      uid: uid,
+      artists: artists,
+      quiz: quiz,
+      score: score
+    };
+
+    // Get a key for a new Post.
+    var newQuizKey = firebase.database().ref().child('quiz').push().key;
+
+    // Write the new post's data simultaneously in the quiz list and the user's quiz list.
+    var updates = {};
+    updates['/quiz/' + newQuizKey] = quizData;
+    updates['/user-quiz/' + uid + '/' + newQuizKey] = quizData;
+
+    return firebase.database().ref().update(updates);
+  }
+
 
 // https://developer.spotify.com/web-api/console/get-artist-albums/
 // Get several albums     ://api.spotify.com/v1/albums

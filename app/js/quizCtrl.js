@@ -19,27 +19,27 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
   $scope.endQuiz = function() {
     $scope.processAnswer();
   }
-  
+
   $scope.setOptions = function(options) {
-    var length = $scope.allTracks.length - 1;
+    var length = $scope.fullList.length - 1;
     $scope.track = $scope.allTracks[$scope.questionNumber - 1];
 
-    options[0] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    options[0] = $scope.fullList[Math.floor(Math.random()*length)].name;
     if(options[0] == $scope.track.name) {
       while(options[0] == $scope.track.name)
-        options[0] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+        options[0] = $scope.fullList[Math.floor(Math.random()*length)].name;
     }
 
-    options[1] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    options[1] = $scope.fullList[Math.floor(Math.random()*length)].name;
     if(options[1] == $scope.track.name || options[1] == options[0]) {
       while(options[1] == $scope.track.name || options[1] == options[0])
-        options[1] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+        options[1] = $scope.fullList[Math.floor(Math.random()*length)].name;
     }
 
-    options[2] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+    options[2] = $scope.fullList[Math.floor(Math.random()*length)].name;
     if(options[2] == $scope.track.name || options[2] == options[0] || options[2] == options[1]) {
       while(options[2] == $scope.track.name || options[2] == options[0] || options[2] == options[1])
-        options[2] = $scope.allTracks[Math.floor(Math.random()*length)].name;
+        options[2] = $scope.fullList[Math.floor(Math.random()*length)].name;
     }
     options[Math.floor(Math.random()*2)] = $scope.track.name;
   }
@@ -50,8 +50,9 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
       $scope.setOptions(options);
 
     } else {
-      Quiz.getQuizQuestion(function(allTracks) {
+      Quiz.getQuizQuestion(function(allTracks, fullList) {
         $scope.allTracks = allTracks;
+        $scope.fullList = fullList;
         $scope.setOptions(options);
       });
     }

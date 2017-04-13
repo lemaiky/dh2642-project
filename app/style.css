@@ -51,11 +51,17 @@ html , body {
 	top:66%;
 	border-style:none;
 	border-radius: 5px;
-	}
+}
+
 .quizButton:hover {
 	background-color: #097054;
 	color: #fff;
-	}
+}
+
+#profileDropdown {
+	background-color:#097054;
+	border-style: none;
+}
 /**********************************************************
 *	HOME VIEW
 **********************************************************/
