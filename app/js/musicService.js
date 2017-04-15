@@ -8,6 +8,35 @@ onlineMusicQuizApp.factory('Quiz',
   var quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
+
+  var database = firebase.database();
+
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('email');
+
+  var uid;
+
+  this.getGoogleAuthProvider = function() {
+    return provider;
+  }
+
+  this.signIn = function() {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accesToken;
+      // The signed-in user info.
+      var user = result.user;
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+    });
+  }
+
   // Set the number of questions in the quiz
   this.setNumberOfQuestions = function(number) {
     $cookies.put('numberOfQuestions', number);
@@ -209,6 +238,7 @@ onlineMusicQuizApp.factory('Quiz',
 
     return firebase.database().ref().update(updates);
   }
+
 
 
 // https://developer.spotify.com/web-api/console/get-artist-albums/

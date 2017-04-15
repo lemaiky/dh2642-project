@@ -1,37 +1,38 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
+<!--Ny-->
+<ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
+<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
+<div id="detailsView">
+  <div class="content">
+    <div id="nameAndImage" >
+      <h1 style="padding-left:60px;"> {{albums[0].artists[0].name}} </h1>
+      <img ng-src={{albums[0].images[0].url}} style="max-width:200px;max-height:200px;">
+      <div class="top-addButton"><button class="quizButton" ng-click="addAlbum()">Add</button></div>
+      <br>
+    </div>
+    <div class="albums" >
+      <h2>Albums</h2>
+        <ul class="collapsible popout" id="albums" data-collapsible="accordion">
+          <li style="vertical-align: middle" ng-repeat="album in albums">
+            <div class="collapsible-header hoverable" id="albumName" style="position: relative">
+              <span class="subtitle work-text left"> <img src={{album.images[0].url}} style="max-width:40px;max-height:40px;"></span>
+              <span class="subtitle work-text center" style="padding-left: 8em; font-weight: bold">{{album.name}}</span>
+              <button style="display: inline-block; vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span></button>
 
-<div class="wrapper">
-	<header class="header">
-	</header>
+            </div>
+            <div class="collapsible-body" style="background-color:#F0FFFF;"ng-repeat="track in albumTracks[album.id].items"> <!--ng-repeat="songs in albumTracks(album)">-->
+              <div class="song" style="height:auto;padding-left:180px;"> {{ track.name }} </div><br><!-- tracks.name-->
+            </div>
 
-	<div class="contentWrapper">
-		<aside class="sidebar">
-			<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
-		</aside>
-		
-		<div class="mainContent">
-			<div class="artistHeaderDiv">
-				<img ng-src={{albums[0].images[0].url}}>
-				<h1>{{albums[0].artists[0].name}} </h1>
-			</div>
-			<div class="scrollDiv">
-				<h2>Albums</h2>
-				<ul class="collapsible popout" id="albums" data-collapsible="accordion">
-					<li style="vertical-align: middle" ng-repeat="album in albums">
-						<div class="collapsible-header hoverable" id="albumWrap" style="position: relative">
-							<span class="subtitle work-text left albumImgSpan"><img src={{album.images[0].url}}></span>
-							<span class="subtitle work-text center albumName" >{{album.name}}</span>
-							<button style="vertical-align: middle" id="addButton" ng-click="" ><span class="album-addButton">+</span>
-							</button>
-						</div>
-						<div class="collapsible-body" style="background-color:#F0FFFF;"ng-repeat="track in albumTracks[album.id].items"> 		<!--ng-repeat="songs in albumTracks(album)">-->
+          </li>
+        </ul>
+
+      </div>
+      <div id="confirm-Button">
+        <a ng-href="#!/search"><button type="button" id="con-btn" class="btn btn-warning">Back</button></a>
+      </div>
+    </div>
+  </div>
 							<div class="song">{{ track.name }} </div><br><!-- tracks.name-->
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
