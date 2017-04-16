@@ -8,33 +8,21 @@ onlineMusicQuizApp.factory('Quiz',
   var quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
+  var questions = new Array();
+  this.uid = "";
+  this.username = "";
 
-  var database = firebase.database();
-
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('email');
-
-  var uid;
-
-  this.getGoogleAuthProvider = function() {
-    return provider;
+  this.setUid = function(uid) {
+    this.uid = uid;
   }
-
-  this.signIn = function() {
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accesToken;
-      // The signed-in user info.
-      var user = result.user;
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-    });
+  this.getUid = function() {
+    return this.uid;
+  }
+  this.setUsername = function(username) {
+    this.username = username;
+  }
+  this.getUsername = function() {
+    return this.username;
   }
 
   // Set the number of questions in the quiz
@@ -82,9 +70,17 @@ onlineMusicQuizApp.factory('Quiz',
     return list;
   }
 
+  this.getListArtistsId = function() {
+    artists = $cookies.get("artists");
+    if(artists && artists.length > 0) {
+      artists = artists.split(',');
+    }
+    return artists;
+  }
+
   this.getQuizQuestion = function(callback) {
     var nbOfQuestions = this.getNumberOfQuestions();
-    var questions = new Array();
+    questions = new Array();
 
     var list = this.getAlbumForQuiz();
     var fullList = new Array();
@@ -105,6 +101,14 @@ onlineMusicQuizApp.factory('Quiz',
         });
       }
     }
+  }
+
+  this.getQuestionList = function() {
+    var questionsId = new Array();
+    for(var i in questions) {
+        questionsId.push(questions[i].id);
+    }
+    return questionsId;
   }
 
   this.getListOfAnswers = function() {
@@ -210,36 +214,6 @@ onlineMusicQuizApp.factory('Quiz',
   this.artistsAlbums = $resource('https://api.spotify.com/v1/artists/:id/albums', {}, {
     get: {}
   });
-
-  this.writeUserData = function(userId, username, email) {
-    firebase.database().ref('users/' + userId).set({
-      username: username,
-      email: email
-    });
-  };
-
-  this.writeQuiz = function(uid, username, artists, quiz, score) {
-    // A post entry.
-    var quizData = {
-      author: username,
-      uid: uid,
-      artists: artists,
-      quiz: quiz,
-      score: score
-    };
-
-    // Get a key for a new Post.
-    var newQuizKey = firebase.database().ref().child('quiz').push().key;
-
-    // Write the new post's data simultaneously in the quiz list and the user's quiz list.
-    var updates = {};
-    updates['/quiz/' + newQuizKey] = quizData;
-    updates['/user-quiz/' + uid + '/' + newQuizKey] = quizData;
-
-    return firebase.database().ref().update(updates);
-  }
-
-
 
 // https://developer.spotify.com/web-api/console/get-artist-albums/
 // Get several albums     ://api.spotify.com/v1/albums

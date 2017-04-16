@@ -3,8 +3,13 @@ onlineMusicQuizApp.controller('SearchCtrl', ['$scope','Quiz', function($scope,Qu
   // including the case while the search is still running.
   $scope.search = function(query,type) {
     Quiz.MusicSearch.get({q:query, type:'artist'},function(data){
-      $scope.music = data.artists.items;
-      $scope.searchButtonText = "";
+      if(data.artists.items.length <= 0) {
+        $scope.status = "No results found.";
+      } else {
+        $scope.status = "";
+        $scope.music = data.artists.items;
+        $scope.searchButtonText = "";
+      }
     },function(data){
       $scope.status = "There was an error";
     });

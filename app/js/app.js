@@ -1,4 +1,4 @@
-var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop']);
+var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop', 'firebase']);
 
 
 /*
@@ -46,8 +46,6 @@ Finally, I am also not sure what is the detail view for. What I get is that it i
 Again, I think it is good idea and can be used to create a music competition with friends!
 
 */
-
-
 
 onlineMusicQuizApp.config(['$routeProvider',
   function($routeProvider) {
