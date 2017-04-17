@@ -1,0 +1,13 @@
+<ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
+
+<div>
+  <table>
+    <tr ng-repeat="message in userSavedQuiz track by $index">
+      <td>
+        Quiz <span>#{{$index}}</span> <br/>
+        Score: {{ userSavedQuiz[$index].score }} <br/>
+        Artists: {{ userSavedQuiz[$index].artists }} <br/>
+      </td>
+    </tr>
+  </table>
+</div>

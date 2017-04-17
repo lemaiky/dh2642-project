@@ -14,9 +14,7 @@ onlineMusicQuizApp.controller('ResultsCtrl', function($scope,$firebaseArray,Quiz
     var quiz = Quiz.getQuestionList();
     var score = Quiz.getNumberOfCorrectAnswers();
 
-    var newQuizKey = firebase.database().ref().child('quiz').push().key;
-
-    var userRef = $firebaseArray(firebase.database().ref('users/' + uid + '/' + newQuizKey));
+    var userRef = $firebaseArray(firebase.database().ref().child('users/' + uid));
     userRef.$add({
       author: username,
       uid: uid,
@@ -25,7 +23,7 @@ onlineMusicQuizApp.controller('ResultsCtrl', function($scope,$firebaseArray,Quiz
       score: score
     })
 
-    var quizRef = $firebaseArray(firebase.database().ref('quiz/' + newQuizKey));
+    var quizRef = $firebaseArray(firebase.database().ref().child('quiz/'));
     quizRef.$add({
       author: username,
       uid: uid,
