@@ -2,7 +2,7 @@ onlineMusicQuizApp.controller('HeaderCtrl', function($scope,$firebaseAuth,Quiz) 
 
   var auth = $firebaseAuth();
   $scope.signIn = function() {
-    if(Quiz.getUid() === "") {
+    if(!Quiz.getUid() || Quiz.getUid() === "") {
       // login with Google
       auth.$signInWithPopup("google").then(function(firebaseUser) {
         $scope.uid = firebaseUser.user.uid;
@@ -13,6 +13,9 @@ onlineMusicQuizApp.controller('HeaderCtrl', function($scope,$firebaseAuth,Quiz) 
       }).catch(function(error) {
         console.log("Authentication failed:", error);
       });
+    } else {
+      $scope.uid = Quiz.getUid();
+      $scope.username = Quiz.getUsername();
     }
   }
 });

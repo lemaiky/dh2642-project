@@ -13,16 +13,18 @@ onlineMusicQuizApp.factory('Quiz',
   this.username = "";
 
   this.setUid = function(uid) {
-    this.uid = uid;
+    $cookies.put('uid', uid);
+    //this.uid = uid;
   }
   this.getUid = function() {
-    return this.uid;
+    return $cookies.get('uid');
   }
   this.setUsername = function(username) {
-    this.username = username;
+    $cookies.put('username', username);
+    //this.username = username;
   }
   this.getUsername = function() {
-    return this.username;
+    return $cookies.get('username');
   }
 
   // Set the number of questions in the quiz

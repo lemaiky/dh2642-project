@@ -69,6 +69,10 @@ onlineMusicQuizApp.config(['$routeProvider',
         templateUrl: 'partials/resultsView.html',
         controller: 'ResultsCtrl'
       }).
+      when('/userSavedQuiz', {
+        templateUrl: 'partials/userSavedQuizView.html',
+        controller: 'UserSavedQuizCtrl'
+      }).
       otherwise({
         redirectTo: '/home'
       });
