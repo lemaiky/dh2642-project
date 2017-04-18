@@ -2,14 +2,28 @@ onlineMusicQuizApp.controller('UserSavedQuizCtrl', function($scope,$location,$fi
   var quizRef = firebase.database().ref().child("users/" + Quiz.getUid());
   $scope.userSavedQuiz = $firebaseArray(quizRef);
 
-  console.log($scope.userSavedQuiz)
+  $scope.getQuizArtists = function() {
+    var artists = new Array();
+    var index = 0;
+    $scope.userSavedQuiz.$loaded().then(function(quiz) {
+      for(var i = 0; i < quiz.length; i++) {
+        for(var j = 0; j < quiz[i].artists.length; j++) {
+          artists[i] = new Array();
+          Quiz.GetArtist.get({id: quiz[i].artists[j]}, function(artist) {
+            artists[index].push(artist.name);
 
-  //TODO: retrieve artists
-  $scope.getArtists = function(artistsId) {
-    Quiz.GetArtist.get({id: artistsId}, function(artist) {
-      $scope.artistName = artist.name;
+            if(j == quiz[index].artists.length)
+              index++;
+
+            if(index == quiz.length)
+              $scope.artists = artists;
+          });
+        }
+      }
     });
   }
+
+  $scope.artists = $scope.getQuizArtists();
 
   $scope.playQuiz = function(event) {
     for(var i in event.quiz.artists) {
