@@ -28,6 +28,18 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
     $scope.listView = Quiz.getChosenQuizMusic();
   };
 
+  $scope.play = function() {
+    Quiz.resetAnswers();
+    for(var i in $scope.listView) {
+      Quiz.GetArtistAlbums.get({id:$scope.listView[i].id}, function(albums) {
+        for(var i in albums.items) {
+          Quiz.saveAlbumForQuiz(albums.items[i].id);
+        }
+      });
+    }
+    
+  }
+
   $scope.listView = Quiz.getChosenQuizMusic();
 
   $scope.removeMusic = function(item) {
