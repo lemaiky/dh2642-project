@@ -5,7 +5,7 @@ onlineMusicQuizApp.factory('Quiz',
   var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
   var albums = new Array();       // list of albums for sidebar view
   var artists = new Array();      // list of artists for sidebar view
-  this.quiz = new Array();         // full list of albums for quiz questions
+  var quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
   var questions = new Array();
