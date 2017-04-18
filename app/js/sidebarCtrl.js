@@ -1,4 +1,4 @@
-onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
+onlineMusicQuizApp.controller('SidebarCtrl', function($scope,$location,Quiz) {
   $scope.score = Quiz.getNumberOfCorrectAnswers()
   $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
   $scope.setNumberOfQuestions = function(number) {
@@ -27,6 +27,21 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,Quiz) {
     }
     $scope.listView = Quiz.getChosenQuizMusic();
   };
+
+  $scope.play = function() {
+    for(var i in $scope.listView) {
+      Quiz.GetArtistAlbums.get({id:$scope.listView[i].id}, function(albums) {
+        Quiz.resetAnswers();
+        for(var j in albums.items) {
+          Quiz.saveAlbumForQuiz(albums.items[j].id);
+        }
+        if(i == $scope.listView.length - 1) {
+          $location.path('quiz');
+        }
+      });
+    }
+
+  }
 
   $scope.listView = Quiz.getChosenQuizMusic();
 

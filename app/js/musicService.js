@@ -8,6 +8,25 @@ onlineMusicQuizApp.factory('Quiz',
   var quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
+  var questions = new Array();
+  this.uid = "";
+  this.username = "";
+
+  this.setUid = function(uid) {
+    $cookies.put('uid', uid);
+    //this.uid = uid;
+  }
+  this.getUid = function() {
+    return $cookies.get('uid');
+  }
+  this.setUsername = function(username) {
+    $cookies.put('username', username);
+    //this.username = username;
+  }
+  this.getUsername = function() {
+    return $cookies.get('username');
+  }
+
   // Set the number of questions in the quiz
   this.setNumberOfQuestions = function(number) {
     $cookies.put('numberOfQuestions', number);
@@ -53,9 +72,17 @@ onlineMusicQuizApp.factory('Quiz',
     return list;
   }
 
+  this.getListArtistsId = function() {
+    artists = $cookies.get("artists");
+    if(artists && artists.length > 0) {
+      artists = artists.split(',');
+    }
+    return artists;
+  }
+
   this.getQuizQuestion = function(callback) {
     var nbOfQuestions = this.getNumberOfQuestions();
-    var questions = new Array();
+    questions = new Array();
 
     var list = this.getAlbumForQuiz();
     var fullList = new Array();
@@ -66,9 +93,10 @@ onlineMusicQuizApp.factory('Quiz',
         this.GetFullAlbum.get({id: list[index]}, function(fullAlbum) {
           var tracks = fullAlbum.tracks.items;
           var rand = Math.floor(Math.random() * (tracks.length - 1));
+          var rand2 = Math.floor(Math.random() * (tracks.length - 1));
           questions.push(tracks[rand]);
           fullList.push(tracks[rand]);
-          fullList.push(tracks[(rand+1)%(tracks.length-1)]);
+          fullList.push(tracks[rand2]);
 
           if(questions.length === nbOfQuestions) {
             callback(questions, fullList);
@@ -76,6 +104,14 @@ onlineMusicQuizApp.factory('Quiz',
         });
       }
     }
+  }
+
+  this.getQuestionList = function() {
+    var questionsId = new Array();
+    for(var i in questions) {
+        questionsId.push(questions[i].id);
+    }
+    return questionsId;
   }
 
   this.getListOfAnswers = function() {
@@ -92,6 +128,7 @@ onlineMusicQuizApp.factory('Quiz',
   this.resetAnswers = function() {
     listOfAnswers = new Array();
     this.setNumberOfCorrectAnswers(0);
+    quiz = new Array();
   }
 
   // Add new music e.g. album or artist (UNFINISHED)
@@ -126,6 +163,8 @@ onlineMusicQuizApp.factory('Quiz',
   }
 
   this.saveAlbumForQuiz = function(albumID) {
+    if(!quiz)
+      quiz = new Array();
     quiz.push(albumID);
     $cookies.put("quiz", quiz);
   }
@@ -148,8 +187,24 @@ onlineMusicQuizApp.factory('Quiz',
 
   this.getAlbumForQuiz = function() {
     quiz = $cookies.get("quiz");
-    quiz = quiz.split(',');
+    if(quiz && quiz.length > 0)
+      quiz = quiz.split(',');
     return quiz;
+  }
+
+  this.getArtistsFromList = function(list) {
+    listArtists = new Array();
+    for(var i in list) {
+      listArtists[list[i].$id] = new Array();
+      for(var j in list[i].artists) {
+        this.GetArtist.get({id: list[i].artists[j]}, function(artist) {
+          listArtists[list[i].$id].push(artist);
+          if(i === list.length-1 && j === list[i].artists.length) {
+            return listArtists;
+          }
+        });
+      }
+    }
   }
 
   // // API request
@@ -181,35 +236,6 @@ onlineMusicQuizApp.factory('Quiz',
   this.artistsAlbums = $resource('https://api.spotify.com/v1/artists/:id/albums', {}, {
     get: {}
   });
-
-  this.writeUserData = function(userId, username, email) {
-    firebase.database().ref('users/' + userId).set({
-      username: username,
-      email: email
-    });
-  };
-
-  this.writeQuiz = function(uid, username, artists, quiz, score) {
-    // A post entry.
-    var quizData = {
-      author: username,
-      uid: uid,
-      artists: artists,
-      quiz: quiz,
-      score: score
-    };
-
-    // Get a key for a new Post.
-    var newQuizKey = firebase.database().ref().child('quiz').push().key;
-
-    // Write the new post's data simultaneously in the quiz list and the user's quiz list.
-    var updates = {};
-    updates['/quiz/' + newQuizKey] = quizData;
-    updates['/user-quiz/' + uid + '/' + newQuizKey] = quizData;
-
-    return firebase.database().ref().update(updates);
-  }
-
 
 // https://developer.spotify.com/web-api/console/get-artist-albums/
 // Get several albums     ://api.spotify.com/v1/albums

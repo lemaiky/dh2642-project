@@ -1,0 +1,42 @@
+<style>
+.newButton {
+	font-size: 16px;
+	background-color: #39D1B4;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	height: 50px;
+	line-height: 20px;
+	text-align: center;
+	width: 125px;
+	border-style:none;
+	border-radius: 5px;
+}
+</style>
+
+<ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
+
+<div style="margin-left: 10%; width: 700px; position: absolute; top: 20%">
+  <div>
+    <h1>Saved Quiz</h1>
+    <table style="width: 500px;">
+      <tr ng-repeat="quiz in userSavedQuiz track by $index">
+        <td style="padding: 10px">
+          <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+            <div>
+              <b>Quiz <span>#{{$index}}</span></b> <br/>
+              Score: {{ userSavedQuiz[$index].score }} <br/>
+              Artists:
+              <ul>
+                <li ng-repeat="artist in artists[$index]">{{ artist }}</li>
+              </ul>
+            </div>
+            <div><button id="userSavedQuiz[$index]" class="btn" ng-click="playQuiz(this)">Play</button></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <a ng-href="#!/search"><button type="button" class="newButton">Create new quiz</button></a>
+  </div>
+</div>

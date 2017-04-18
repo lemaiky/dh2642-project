@@ -20,46 +20,11 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
-    <!-- The application JavaScript code -->
-    <script src="js/app.js"></script>
-    <script src="js/detailsCtrl.js"></script>
-    <script src="js/quizCtrl.js"></script>
-    <script src="js/resultsCtrl.js"></script>
-    <script src="js/searchCtrl.js"></script>
-    <script src="js/sidebarCtrl.js"></script>
-    <script src="js/musicService.js"></script>
-
-  </head>
-  <body>
-    <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
-    ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
-    <header class="header" style="display:flex;z-index:1;">
-      <a ng-href="#!/home">
-        <img src="http://www.freeiconspng.com/uploads/record-icon-9.png" style="max-width:60px;max-height:60px;position:absolute;top:20px;left:20px;">
-        <h1>Online Music Quiz</h1>
-      </a>
-      <div style="position:absolute;top:25px;right:25px;" class="dropdown">
-        <button class="dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <span class="glyphicon glyphicon-user" style="font-size: 3em;"/>
-        </button>
-          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Saved Quiz</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Log out</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
-    <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
-    where you specify which partial should be loaded when. -->
-    <div id="view" ng-view></div>
-
-    <!-- firebase database scripts -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
     <script>
       // Initialize Firebase
       var config = {
@@ -71,9 +36,26 @@
         messagingSenderId: "2277070346"
       };
       firebase.initializeApp(config);
-
-      var database = firebase.database();
     </script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- The application JavaScript code -->
+    <script src="js/app.js"></script>
+    <script src="js/detailsCtrl.js"></script>
+    <script src="js/quizCtrl.js"></script>
+    <script src="js/resultsCtrl.js"></script>
+    <script src="js/searchCtrl.js"></script>
+    <script src="js/sidebarCtrl.js"></script>
+    <script src="js/headerCtrl.js"></script>
+    <script src="js/userSavedQuizCtrl.js"></script>
+    <script src="js/musicService.js"></script>
+
+  </head>
+  <body>
+    <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
+    where you specify which partial should be loaded when. -->
+    <div id="view" ng-view></div>
 
   </body>
 </html>

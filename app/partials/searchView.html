@@ -1,15 +1,14 @@
 <link rel="stylesheet" type="text/css" href="../style.css">
 
+<ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
+
 <div class="wrapper">
-	<!--
-	<header class="header">
-	</header>
-	-->
+
 	<div class="contentWrapper">
 		<aside class="sidebar">
 			<ng-include src="'partials/sidebarView.html'" ng-controller="SidebarCtrl"></ng-include>
 		</aside>
-		
+
 		<div class="mainContent">
 			<div class="searchDiv">
 				<form id="search-form">

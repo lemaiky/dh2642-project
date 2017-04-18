@@ -1,4 +1,4 @@
-var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop']);
+var onlineMusicQuizApp = angular.module('online-music-quiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop', 'firebase']);
 
 
 /*
@@ -47,8 +47,6 @@ Again, I think it is good idea and can be used to create a music competition wit
 
 */
 
-
-
 onlineMusicQuizApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -70,6 +68,10 @@ onlineMusicQuizApp.config(['$routeProvider',
       when('/results', {
         templateUrl: 'partials/resultsView.html',
         controller: 'ResultsCtrl'
+      }).
+      when('/userSavedQuiz', {
+        templateUrl: 'partials/userSavedQuizView.html',
+        controller: 'UserSavedQuizCtrl'
       }).
       otherwise({
         redirectTo: '/home'
