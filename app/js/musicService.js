@@ -5,7 +5,7 @@ onlineMusicQuizApp.factory('Quiz',
   var numberOfCorrectAnswers = $cookies.put('numberOfCorrectAnswers', 0);;
   var albums = new Array();       // list of albums for sidebar view
   var artists = new Array();      // list of artists for sidebar view
-  var quiz = new Array();         // full list of albums for quiz questions
+  this.quiz = new Array();         // full list of albums for quiz questions
   var listOfAnswers = [];
 
   var questions = new Array();
@@ -127,6 +127,7 @@ onlineMusicQuizApp.factory('Quiz',
   this.resetAnswers = function() {
     listOfAnswers = new Array();
     this.setNumberOfCorrectAnswers(0);
+    delete quiz;
   }
 
   // Add new music e.g. album or artist (UNFINISHED)
@@ -161,7 +162,10 @@ onlineMusicQuizApp.factory('Quiz',
   }
 
   this.saveAlbumForQuiz = function(albumID) {
+    if(!quiz)
+      quiz = new Array();
     quiz.push(albumID);
+    $cookies.remove("quiz");
     $cookies.put("quiz", quiz);
   }
 
@@ -183,8 +187,24 @@ onlineMusicQuizApp.factory('Quiz',
 
   this.getAlbumForQuiz = function() {
     quiz = $cookies.get("quiz");
-    quiz = quiz.split(',');
+    if(quiz && quiz.length > 0)
+      quiz = quiz.split(',');
     return quiz;
+  }
+
+  this.getArtistsFromList = function(list) {
+    listArtists = new Array();
+    for(var i in list) {
+      listArtists[list[i].$id] = new Array();
+      for(var j in list[i].artists) {
+        this.GetArtist.get({id: list[i].artists[j]}, function(artist) {
+          listArtists[list[i].$id].push(artist);
+          if(i === list.length-1 && j === list[i].artists.length) {
+            return listArtists;
+          }
+        });
+      }
+    }
   }
 
   // // API request
