@@ -1,6 +1,13 @@
 /**********************************************************
 *	MAIN BODY
 **********************************************************/
+* {
+	margin: 0px;
+	padding: 0px;
+
+	box-sizing: border-box;
+}
+
 html , body {
 	width:100%;
 	height:100%;
@@ -24,16 +31,6 @@ html , body {
 	top:12px;
 	text-align:left;
 	color:white;
-}
-
-.sidebar {
-  position:absolute;
-	padding-top:50px;
-  top:100px;
-  left:0px;
-  width:350px;
-  bottom:0px;
-  background-color:#097054;
 }
 
 .quizButton {
@@ -84,9 +81,244 @@ html , body {
 }
 
 /**********************************************************
-*	SEARCH VIEW
+*	SIDEBARVIEW
 **********************************************************/
 
+.sidebarWrapper{
+	width:300px;
+}
+		
+.dropTable {
+	width:250px;
+	min-height: 150px;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+
+	position: relative;
+    margin: 0 auto;
+}
+
+#sidebarList{
+	list-style: none;
+}
+
+#sidebarList li:not(:first-child) {
+	border-top: 1px solid black;
+}
+
+
+ul#sidebarList li{
+	
+	display: flex;
+}
+
+.sidebarListContentName{
+	flex-grow: 1;
+	margin: 4px; 
+}
+
+.removeButton{
+	float: left;
+	margin: 4px;
+}
+
+#con-btn {
+	font-size: 16px;
+	background-color: #39D1B4;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	height: 50px;
+	line-height: 20px;
+	text-align: center;
+	width: 125px;
+	border-radius: 5px;
+	border-style: none;
+  	position: relative;
+    margin: 0 auto;
+}
+#con-btn:hover {
+	background-color: #097054;
+	color: #fff;
+}
+
+#start-quiz-button{
+	width: 125px;
+	position: relative;
+    margin: 0 auto;
+}
+
+
+/**********************************************************
+*	SEARCH VIEW
+**********************************************************/
+	
+	.wrapper {
+		border: 10px solid green;
+		height: 100vh;
+		
+		display: flex;
+		flex-direction: column;
+	}	
+	
+	.contentWrapper {
+		display: flex;
+		flex-direction: row;
+		flex-grow: 1;
+		margin-top: 100px;
+	}
+	
+	.mainContent {
+		display: flex;
+		flex-direction: column;
+		border: 10px solid magenta;
+		flex-grow: 1;
+	}
+
+	.sidebar {
+		flex-shrink: 0;
+		border-right: 10px solid cyan;
+	}
+	
+	.searchDiv {
+		border: 10px solid yellow;
+		flex-shrink: 0;
+	}
+	
+	.searchField{
+		width: auto;
+		float: left;
+	}
+	
+	.searchButton{
+		float: left;
+		margin-left: 20px;
+	}
+	
+	.scrollDiv {
+		border: 10px solid orange;
+		flex-grow: 1;
+		overflow: auto;
+	}
+	
+	.searchList li:nth-child(odd) {
+		background-color: #eee;
+	}
+
+	.searchList{
+		min-width: 400px;
+	}
+
+	.searchList li{
+		list-style: none;
+		display: block;
+
+		margin: 4px auto;
+		
+		-webkit-border-radius:10px;
+		opacity: 0.6;
+		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
+	}
+	
+	.searchList li:hover{
+		opacity: 1;
+		margin-top: 12px;
+		margin-bottom: 12px;
+		background: #1ec7e6;
+	}
+	
+	.listlink{
+		display: block;
+		height: 80px;
+	}
+
+	.artistCover {
+		float: left;
+		margin: 10 auto;
+		margin-left: 10px;
+		height: 80px;
+		width: 80px;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+		border-radius: 50%;
+	}
+
+	.artistName {
+		float: left;
+		margin-left: 10px;
+		height: 75px;
+	}
+
+	
+/**********************************************************
+*	DETAILS VIEW
+**********************************************************/
+
+.artistHeaderDiv {
+	display: flex;
+	flex-direction: row;
+	border: 10px solid yellow;
+	flex-shrink: 0;
+}
+
+.artistHeaderDiv img{
+	width: 200px;
+	height: 200px;
+}
+
+.artistHeaderDiv h1{
+	border: 1px solid green;
+	width: auto;
+	float: left;
+	flex-grow: 1;
+	margin: 20px;
+}
+
+button#addButton {
+  border: 1px solid cyan;
+  background: none;
+}
+
+.popout{
+	min-width: 400px;
+}
+
+.popout li{
+	list-style: none;
+	display: block;
+	margin: 4px auto;
+	border: 1px solid blue;
+}
+
+#albumWrap {
+	display: block;
+	height: 84px;
+	border: 1px solid cyan;
+}
+
+.albumImgSpan img{
+	float: left;
+	margin-left: 10px;
+	height: 80px;
+	width: 80px;
+	border: 1px solid yellow;
+}
+
+span.albumName{
+	float: left;
+	display: block;
+	
+	margin-left:20px;
+	margin-right: 20px;
+	flex-grow: 1;
+	border: 1px solid magenta;
+}
+
+span.song {
+	/* ... */
+}
 
 /**********************************************************
 *	QUIZ VIEW

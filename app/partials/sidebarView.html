@@ -1,61 +1,22 @@
 <link rel="stylesheet" type="text/css" href="../style.css">
 
-<style>
-.sidebar {
-  position: fixed;
-}
-.dropTable {
-  background-color:white;
-  margin-left: 5%;
-  width:300px;
-  min-height: 150px;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 1px;
-  text-align: center;
-  padding-top:15%;
-}
-ul#listTable {
-    list-style-type: none;
-}
-
-#con-btn {
-	margin-top: 5%;
-	font-size: 16px;
-	background-color: #39D1B4;
-	color: #fff;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-	height: 50px;
-	line-height: 20px;
-	text-align: center;
-	width: 125px;
-  border-radius: 5px;
-  border-style: none;
-}
-#con-btn:hover {
-	background-color: #097054;
-	color: #fff;
-}
-
-</style>
-
-<div class="sidebar">
-	<div><h2 style="text-align:center;color:white;">Settings</h2>
+<div class="sidebarWrapper">
+	<div>
+		<h2 style="text-align:center;">Settings</h2>
 		<hr>
-		<h4 style="text-align:center;color:white;">Total Nb of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)" min="1" max="20"/></h4>
-    <br/>
-		<h4 style="text-align:center;color:white;">Selected artists</h4>
+		<h4 style="text-align:center;">Total Nb of Questions <input type="number" style="width:50px;color:black;" ng-model="numberOfQuestions" ng-change="setNumberOfQuestions(numberOfQuestions)" min="1" max="20"/></h4>
+		<br/>
+		<h4 style="text-align:center;">Selected artists</h4>
 	</div>
     <div class="dropTable" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable="{multiple:true,onDrop:'saveList()'}">
-      <div ng-hide="listView.length > 0">Drag and drop artists here</div>
-      <ul id="listTable">
-        <li ng-repeat="item in listView">
-          <div data-drag="false" data-jqyoui-options jqyoui-draggable>{{item.name}}
-            <button class="glyphicon glyphicon-trash btn-md" ng-click="removeMusic(item)"></button>
-          </div>
-        </li>
-      </ul>
-  </div>
+		<div ng-hide="listView.length > 0">Drag and drop artists here</div>
+		<ul id="sidebarList">
+			<li ng-repeat="item in listView">
+				<div class="sidebarListContentName" data-drag="false" data-jqyoui-options jqyoui-draggable>{{item.name}}</div>
+				<button class="glyphicon glyphicon-trash btn-md removeButton" ng-click="removeMusic(item)"></button>
+			</li>
+		</ul>
+	</div>
 
     <!-- <div id="musicList" ng-repeat="artist in artists" style="border:solid;border-width:1px;width:100%;padding-right:3px;">
 
@@ -64,7 +25,11 @@ ul#listTable {
     </div> -->
 	<hr id="horisontalLine"></hr>
     <div id="start-quiz-button">
-      <a ng-href="#!/quiz"><div ng-if="listView.length > 0" style="padding-left:32%;" ><button type="button" id="con-btn" >Start Quiz!</button></div></a>
+		<a ng-href="#!/quiz">
+			<div ng-if="listView.length > 0">
+				<button type="button" id="con-btn" >Start Quiz!</button>
+			</div>
+		</a>
 		<!--<a ng-href="#!/quiz" style="padding-left:35%;color:white;"><button type="button" class="btn btn-warning" id="con-btn" >Start Quiz!</button></a>-->
     </div>
 </div>
