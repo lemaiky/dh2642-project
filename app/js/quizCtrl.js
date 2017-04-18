@@ -46,7 +46,7 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
 
   $scope.getOptions = function() {
     var options = new Array(3);
-    if($scope.allTracks && $scope.allTracks.length > 0) {
+    if($scope.allTracks && $scope.allTracks.length > 0 && $scope.fullList && $scope.fullList.length > 0) {
       $scope.setOptions(options);
 
     } else {

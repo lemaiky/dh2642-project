@@ -93,9 +93,10 @@ onlineMusicQuizApp.factory('Quiz',
         this.GetFullAlbum.get({id: list[index]}, function(fullAlbum) {
           var tracks = fullAlbum.tracks.items;
           var rand = Math.floor(Math.random() * (tracks.length - 1));
+          var rand2 = Math.floor(Math.random() * (tracks.length - 1));
           questions.push(tracks[rand]);
           fullList.push(tracks[rand]);
-          fullList.push(tracks[(rand+1)%(tracks.length-1)]);
+          fullList.push(tracks[rand2]);
 
           if(questions.length === nbOfQuestions) {
             callback(questions, fullList);
@@ -127,7 +128,7 @@ onlineMusicQuizApp.factory('Quiz',
   this.resetAnswers = function() {
     listOfAnswers = new Array();
     this.setNumberOfCorrectAnswers(0);
-    delete quiz;
+    quiz = new Array();
   }
 
   // Add new music e.g. album or artist (UNFINISHED)
@@ -165,7 +166,6 @@ onlineMusicQuizApp.factory('Quiz',
     if(!quiz)
       quiz = new Array();
     quiz.push(albumID);
-    $cookies.remove("quiz");
     $cookies.put("quiz", quiz);
   }
 
