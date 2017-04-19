@@ -3,6 +3,8 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
   $scope.numberOfQuestions = Quiz.getNumberOfQuestions();
   $scope.questionNumber = 1;
   $scope.progressValue = $scope.questionNumber / $scope.numberOfQuestions * 100;
+  $scope.allTracks = new Array();
+  $scope.fullList = new Array();
 
   $scope.setNextQuestion = function() {
     if(!$scope.answer || $scope.answer == "")
@@ -48,7 +50,6 @@ onlineMusicQuizApp.controller('QuizCtrl', function($scope,Quiz) {
     var options = new Array(3);
     if($scope.allTracks && $scope.allTracks.length > 0 && $scope.fullList && $scope.fullList.length > 0) {
       $scope.setOptions(options);
-
     } else {
       Quiz.getQuizQuestion(function(allTracks, fullList) {
         $scope.allTracks = allTracks;

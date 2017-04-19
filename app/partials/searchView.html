@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../style.css">
 
 <ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
@@ -15,15 +16,21 @@
 					<input type="text" ng-model="query" id="artist" value="" class="form-control searchField" placeholder="Search for artist"/>
 					<input type="submit" id="search" class="btn btn-primary searchButton" value="Search" ng-click="search(query)"/>
 				</form>
+				<div><span>{{ status }}</span></div>
 			</div>
 			<div class="scrollDiv">
-				<ul class="searchList">
+				<ul class="searchList collapsible collapsible-accordion" data-collapsible="accordion">
 					<li ng-repeat="artist in music">
-						<div id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{animate:true,placeholder:'keep',onDrag:'addToDrag(this)'}">
-							<a class="listlink" ng-href="#!/details/{{artist.id}}">
-								<img class="artistCover" ng-src="{{artist.images[0].url}}">
-								<div class="artistName">{{artist.name}}</div>
-							</a>
+						<div ng-click="loadAlbums(this)" class="collapsible-header listlink" id={{$index}} data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{animate:true,placeholder:'keep',onDrag:'addToDrag(this)'}">
+							<img class="artistCover" ng-src="{{artist.images[0].url}}">
+							<span class="artistName">{{artist.name}}</span>
+						</div>
+						<div class="collapsible-body">
+							<ul class="listAlbums">
+								<li ng-repeat="album in albums[artist.id]">
+									{{album.name}}
+								</li>
+							</ul>
 						</div>
 					</li>
 				</ul>

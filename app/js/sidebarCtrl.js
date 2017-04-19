@@ -29,18 +29,21 @@ onlineMusicQuizApp.controller('SidebarCtrl', function($scope,$location,Quiz) {
   };
 
   $scope.play = function() {
+    var index = 0;
+    Quiz.resetAnswers();
     for(var i in $scope.listView) {
       Quiz.GetArtistAlbums.get({id:$scope.listView[i].id}, function(albums) {
-        Quiz.resetAnswers();
         for(var j in albums.items) {
           Quiz.saveAlbumForQuiz(albums.items[j].id);
         }
-        if(i == $scope.listView.length - 1) {
+  
+        if(index == $scope.listView.length - 1) {
           $location.path('quiz');
+        } else {
+          index++;
         }
       });
     }
-
   }
 
   $scope.listView = Quiz.getChosenQuizMusic();
