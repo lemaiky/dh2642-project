@@ -33,6 +33,10 @@ html , body {
 	color:white;
 }
 
+#listOfQuizes li {
+    list-style-type: none;
+}
+
 .quizButton {
 	font-size: 16px;
 	background-color: #39D1B4;
@@ -87,7 +91,7 @@ html , body {
 .sidebarWrapper{
 	width:300px;
 }
-		
+
 .dropTable {
 	width:250px;
 	min-height: 150px;
@@ -109,13 +113,13 @@ html , body {
 
 
 ul#sidebarList li{
-	
+
 	display: flex;
 }
 
 .sidebarListContentName{
 	flex-grow: 1;
-	margin: 4px; 
+	margin: 4px;
 }
 
 .removeButton{
@@ -152,22 +156,22 @@ ul#sidebarList li{
 /**********************************************************
 *	SEARCH VIEW
 **********************************************************/
-	
+
 	.wrapper {
 		border: 10px solid green;
 		height: 100vh;
-		
+
 		display: flex;
 		flex-direction: column;
-	}	
-	
+	}
+
 	.contentWrapper {
 		display: flex;
 		flex-direction: row;
 		flex-grow: 1;
 		margin-top: 100px;
 	}
-	
+
 	.mainContent {
 		display: flex;
 		flex-direction: column;
@@ -179,28 +183,28 @@ ul#sidebarList li{
 		flex-shrink: 0;
 		border-right: 10px solid cyan;
 	}
-	
+
 	.searchDiv {
 		border: 10px solid yellow;
 		flex-shrink: 0;
 	}
-	
+
 	.searchField{
 		width: auto;
 		float: left;
 	}
-	
+
 	.searchButton{
 		float: left;
 		margin-left: 20px;
 	}
-	
+
 	.scrollDiv {
 		border: 10px solid orange;
 		flex-grow: 1;
 		overflow: auto;
 	}
-	
+
 	.searchList li:nth-child(odd) {
 		background-color: #eee;
 	}
@@ -214,19 +218,19 @@ ul#sidebarList li{
 		display: block;
 
 		margin: 4px auto;
-		
+
 		-webkit-border-radius:10px;
 		opacity: 0.6;
 		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
 	}
-	
+
 	.searchList li:hover{
 		opacity: 1;
 		margin-top: 12px;
 		margin-bottom: 12px;
 		background: #1ec7e6;
 	}
-	
+
 	.listlink{
 		display: block;
 		height: 80px;
@@ -251,7 +255,7 @@ ul#sidebarList li{
 		height: 75px;
 	}
 
-	
+
 /**********************************************************
 *	DETAILS VIEW
 **********************************************************/
@@ -309,7 +313,7 @@ button#addButton {
 span.albumName{
 	float: left;
 	display: block;
-	
+
 	margin-left:20px;
 	margin-right: 20px;
 	flex-grow: 1;
