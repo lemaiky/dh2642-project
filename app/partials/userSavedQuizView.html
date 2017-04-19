@@ -33,7 +33,7 @@
               Score: {{ userSavedQuiz[$index].score }} <br/>
               Artists:
               <ul style="list-style-type: none;">
-                <li ng-repeat="artist in artists[$index]" style="padding-left: 10px;">{{ artist }}</li>
+                <li ng-repeat="artist in artists[$index] track by $index" style="padding-left: 10px;">{{ artist }}</li>
               </ul>
             </div>
             <div><button id="userSavedQuiz[$index]" class="btn" ng-click="playQuiz(this)">Play</button></div>
