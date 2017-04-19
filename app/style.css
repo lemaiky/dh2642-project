@@ -158,7 +158,7 @@ ul#sidebarList li{
 **********************************************************/
 
 	.wrapper {
-		border: 10px ;
+		border: 10px solid green;
 		height: 100vh;
 
 		display: flex;
@@ -175,18 +175,17 @@ ul#sidebarList li{
 	.mainContent {
 		display: flex;
 		flex-direction: column;
-		border: 10px  ;
+		border: 10px solid magenta;
 		flex-grow: 1;
-		margin-top:20px;
 	}
 
 	.sidebar {
 		flex-shrink: 0;
-		border-right: 10px;
+		border-right: 10px solid cyan;
 	}
 
 	.searchDiv {
-		border: 10px;
+		border: 10px solid yellow;
 		flex-shrink: 0;
 	}
 
@@ -201,7 +200,7 @@ ul#sidebarList li{
 	}
 
 	.scrollDiv {
-		border: 10px;
+		border: 10px solid orange;
 		flex-grow: 1;
 		overflow: auto;
 	}
@@ -264,7 +263,7 @@ ul#sidebarList li{
 .artistHeaderDiv {
 	display: flex;
 	flex-direction: row;
-	border: 10px;
+	border: 10px solid yellow;
 	flex-shrink: 0;
 }
 
@@ -274,7 +273,7 @@ ul#sidebarList li{
 }
 
 .artistHeaderDiv h1{
-	border: 1px;
+	border: 1px solid green;
 	width: auto;
 	float: left;
 	flex-grow: 1;
@@ -282,7 +281,7 @@ ul#sidebarList li{
 }
 
 button#addButton {
-  border: 1px;
+  border: 1px solid cyan;
   background: none;
 }
 
@@ -294,13 +293,13 @@ button#addButton {
 	list-style: none;
 	display: block;
 	margin: 4px auto;
-	border: 1px;
+	border: 1px solid blue;
 }
 
 #albumWrap {
 	display: block;
 	height: 84px;
-	border: 1px;
+	border: 1px solid cyan;
 }
 
 .albumImgSpan img{
@@ -308,7 +307,7 @@ button#addButton {
 	margin-left: 10px;
 	height: 80px;
 	width: 80px;
-	border: 1px;
+	border: 1px solid yellow;
 }
 
 span.albumName{
@@ -318,7 +317,7 @@ span.albumName{
 	margin-left:20px;
 	margin-right: 20px;
 	flex-grow: 1;
-	border: 1px;
+	border: 1px solid magenta;
 }
 
 span.song {
