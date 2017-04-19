@@ -436,3 +436,16 @@ audio {
   background-color:white;
   background-color:#097054;
 }
+
+.newButton {
+	font-size: 16px;
+	background-color: #39D1B4;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	height: 50px;
+	line-height: 20px;
+	text-align: center;
+	width: 125px;
+	border-style:none;
+	border-radius: 5px;
+}
