@@ -217,9 +217,7 @@ ul#sidebarList li{
 	.searchList li{
 		list-style: none;
 		display: block;
-
 		margin: 4px auto;
-
 		-webkit-border-radius:10px;
 		opacity: 0.6;
 		-webkit-transition: opacity .1s, margin-top .1s, margin-bottom .1s, background .1s;
@@ -230,6 +228,21 @@ ul#sidebarList li{
 		margin-top: 12px;
 		margin-bottom: 12px;
 		background: #1ec7e6;
+	}
+
+	.listAlbums li{
+		list-style: none;
+		display: block;
+		margin: 4px auto;
+		opacity: 1;
+		background-color: white;
+		-webkit-border-radius:0px;
+	}
+
+	.listAlbums li:hover{
+		opacity: 1;
+		margin: 4px auto;
+		background-color: initial;
 	}
 
 	.listlink{
@@ -256,6 +269,17 @@ ul#sidebarList li{
 		height: 75px;
 	}
 
+	.collapsible-body {
+    display: none;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+		background-color: white;
+	}
+
+	.active, .active:hover {
+		opacity: 1;
+		background: #1ec7e6;
+	}
 
 /**********************************************************
 *	DETAILS VIEW
@@ -411,4 +435,17 @@ audio {
   width:100%;
   background-color:white;
   background-color:#097054;
+}
+
+.newButton {
+	font-size: 16px;
+	background-color: #39D1B4;
+	color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	height: 50px;
+	line-height: 20px;
+	text-align: center;
+	width: 125px;
+	border-style:none;
+	border-radius: 5px;
 }
