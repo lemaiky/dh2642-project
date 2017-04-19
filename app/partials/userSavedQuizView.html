@@ -23,11 +23,11 @@
         <td style="padding: 10px">
           <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
             <div>
-              <b>Quiz <span>#{{$index}}</span></b> <br/>
+              <b>Quiz <span>#{{$index + 1}}</span></b> <br/>
               Score: {{ userSavedQuiz[$index].score }} <br/>
               Artists:
-              <ul>
-                <li ng-repeat="artist in artists[$index]">{{ artist }}</li>
+              <ul style="list-style-type: none;">
+                <li ng-repeat="artist in artists[$index]" style="padding-left: 10px;">{{ artist }}</li>
               </ul>
             </div>
             <div><button id="userSavedQuiz[$index]" class="btn" ng-click="playQuiz(this)">Play</button></div>
