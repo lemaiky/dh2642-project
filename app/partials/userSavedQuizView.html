@@ -11,7 +11,6 @@
 	border-style:none;
 	border-radius: 5px;
 }
-
 </style>
 
 <ng-include src="'partials/headerView.html'" ng-controller="HeaderCtrl"></ng-include>
@@ -23,13 +22,8 @@
       <tr ng-repeat="quiz in userSavedQuiz track by $index">
         <td style="padding: 10px">
           <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
-<<<<<<< HEAD
-            <div id="listOfQuizes">
-              <b>Quiz <span>#{{$index}}</span></b> <br/>
-=======
             <div>
               <b>Quiz <span>#{{$index + 1}}</span></b> <br/>
->>>>>>> merge views
               Score: {{ userSavedQuiz[$index].score }} <br/>
               Artists:
               <ul style="list-style-type: none;">
